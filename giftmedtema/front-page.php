@@ -7,11 +7,13 @@
 
 get_header();
 
-$theme_img = giftmedtema_asset( 'assets/img' );
-$hero_img  = $theme_img . '/giftmedquadrado.png';
+$theme_img    = giftmedtema_asset( 'assets/img' );
+$img_agua     = $theme_img . '/agua.png';
+$img_saude    = $theme_img . '/saude.png';
+$img_ambiente = $theme_img . '/ambiente.png';
 ?>
 
-<section id="hero" class="gm-hero">
+<section id="hero" class="gm-hero" aria-labelledby="gm-hero-title">
 	<div class="gm-container gm-hero__grid">
 		<div class="gm-hero__content reveal">
 			<div class="gm-hero__badge">
@@ -19,9 +21,9 @@ $hero_img  = $theme_img . '/giftmedquadrado.png';
 				<span><?php esc_html_e( 'Plataforma de Saúde Sustentável', 'giftmedtema' ); ?></span>
 			</div>
 
-			<h1 class="gm-hero__title">
+			<h1 id="gm-hero-title" class="gm-hero__title">
 				<?php esc_html_e( 'Tecnologia Social para', 'giftmedtema' ); ?>
-				<br><span class="gm-title-gradient"><?php esc_html_e( 'Farmácia Solidária', 'giftmedtema' ); ?></span>
+				<br><span class="gm-hero__title-accent"><?php esc_html_e( 'Farmácia Solidária', 'giftmedtema' ); ?></span>
 			</h1>
 
 			<p class="gm-hero__lead">
@@ -46,19 +48,48 @@ $hero_img  = $theme_img . '/giftmedquadrado.png';
 			</div>
 
 			<div class="gm-hero__actions">
-				<a href="#contato" class="gm-btn gm-btn--accent"><?php esc_html_e( 'Solicitar Demonstração', 'giftmedtema' ); ?></a>
-				<a href="#solucao" class="gm-btn gm-btn--secondary"><?php esc_html_e( 'Conhecer a Plataforma', 'giftmedtema' ); ?></a>
+				<a href="#contato" class="gm-btn gm-hero__btn-primary"><?php esc_html_e( 'Solicitar Demonstração', 'giftmedtema' ); ?></a>
+				<a href="#solucao" class="gm-btn gm-hero__btn-secondary"><?php esc_html_e( 'Conhecer a Plataforma', 'giftmedtema' ); ?></a>
 			</div>
 		</div>
 
 		<div class="gm-hero__visual reveal reveal-delay-2">
-			<div class="gm-hero__frame">
-				<img src="<?php echo esc_url( $hero_img ); ?>" alt="<?php esc_attr_e( 'GiftMed — Conectando Saúde e Solidariedade', 'giftmedtema' ); ?>">
-				<div class="gm-hero__caption">
-					<small><?php esc_html_e( 'Identidade Oficial', 'giftmedtema' ); ?></small>
-					<strong><?php esc_html_e( 'GiftMed — Lançamento da Solução', 'giftmedtema' ); ?></strong>
-				</div>
-			</div>
+			<aside class="gm-risk-card" aria-labelledby="gm-risk-title">
+				<p class="gm-risk-card__label"><?php esc_html_e( 'Atenção', 'giftmedtema' ); ?></p>
+				<h2 id="gm-risk-title" class="gm-risk-card__title">
+					<?php esc_html_e( 'Riscos do Descarte Incorreto', 'giftmedtema' ); ?>
+				</h2>
+
+				<ul class="gm-risk-card__list">
+					<li class="gm-risk-card__item">
+						<span class="gm-risk-card__icon">
+							<img src="<?php echo esc_url( $img_agua ); ?>" alt="" width="40" height="40">
+						</span>
+						<div class="gm-risk-card__body">
+							<strong><?php esc_html_e( 'Contaminação da Água', 'giftmedtema' ); ?></strong>
+							<p><?php esc_html_e( 'Rios, lagos e lençóis freáticos podem ser contaminados, afetando ecossistemas e a água potável.', 'giftmedtema' ); ?></p>
+						</div>
+					</li>
+					<li class="gm-risk-card__item">
+						<span class="gm-risk-card__icon">
+							<img src="<?php echo esc_url( $img_saude ); ?>" alt="" width="40" height="40">
+						</span>
+						<div class="gm-risk-card__body">
+							<strong><?php esc_html_e( 'Riscos à Saúde', 'giftmedtema' ); ?></strong>
+							<p><?php esc_html_e( 'Consumo acidental ou contato com substâncias ativas pode causar intoxicações e outros problemas.', 'giftmedtema' ); ?></p>
+						</div>
+					</li>
+					<li class="gm-risk-card__item">
+						<span class="gm-risk-card__icon">
+							<img src="<?php echo esc_url( $img_ambiente ); ?>" alt="" width="40" height="40">
+						</span>
+						<div class="gm-risk-card__body">
+							<strong><?php esc_html_e( 'Impacto Ambiental', 'giftmedtema' ); ?></strong>
+							<p><?php esc_html_e( 'Resíduos farmacêuticos afetam fauna, flora e desequilibram ecossistemas inteiros.', 'giftmedtema' ); ?></p>
+						</div>
+					</li>
+				</ul>
+			</aside>
 		</div>
 	</div>
 </section>

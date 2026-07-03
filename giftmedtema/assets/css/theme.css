@@ -92,12 +92,12 @@ h1, h2, h3, h4, h5 {
 }
 
 .gm-section {
-	padding: 4rem 0;
+	padding: 2.25rem 0;
 }
 
 @media (min-width: 768px) {
 	.gm-section {
-		padding: 6rem 0;
+		padding: 3rem 0;
 	}
 }
 
@@ -124,7 +124,7 @@ h1, h2, h3, h4, h5 {
 .gm-section__head {
 	text-align: center;
 	max-width: 40rem;
-	margin: 0 auto 3rem;
+	margin: 0 auto 1.75rem;
 }
 
 .gm-section__head p {
@@ -265,6 +265,15 @@ h1, h2, h3, h4, h5 {
 	background: var(--gm-green-soft);
 	font-size: 1.25rem;
 	margin-bottom: 1rem;
+}
+
+#desafio .gm-card {
+	text-align: center;
+}
+
+#desafio .gm-card__icon {
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .gm-card__title {
@@ -517,22 +526,31 @@ h1, h2, h3, h4, h5 {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Hero                                                                       */
+/* Hero — split com painel bento à direita                                  */
 /* -------------------------------------------------------------------------- */
 .gm-hero {
+	--hero-ink: #0f2f44;
+	--hero-teal: #0f766e;
+	--hero-teal-deep: #115e59;
+	--hero-mint: #ccfbf1;
+	--hero-sky: #e0f2fe;
+	--hero-coral: #ea580c;
+	--hero-coral-soft: #ffedd5;
+	--hero-panel: linear-gradient(155deg, #0f766e 0%, #0e7490 48%, #1d4ed8 100%);
+
 	position: relative;
 	overflow: hidden;
-	padding: 3rem 0 4rem;
+	padding: 2.25rem 0 2.5rem;
 	background:
-		radial-gradient(circle at 0% 0%, rgba(0, 74, 153, 0.08), transparent 45%),
-		radial-gradient(circle at 100% 0%, rgba(30, 132, 73, 0.08), transparent 40%),
-		var(--gm-bg);
+		radial-gradient(circle at 8% 12%, rgba(14, 116, 144, 0.12), transparent 42%),
+		radial-gradient(circle at 92% 18%, rgba(15, 118, 110, 0.12), transparent 40%),
+		linear-gradient(180deg, #f0f9ff 0%, #f8fafc 55%, #ecfeff 100%);
 }
 
 .gm-hero__grid {
 	display: grid;
 	gap: 2.5rem;
-	align-items: center;
+	align-items: stretch;
 }
 
 .gm-hero__content {
@@ -546,13 +564,13 @@ h1, h2, h3, h4, h5 {
 	padding: 0.45rem 0.9rem;
 	border-radius: 999px;
 	background: var(--gm-white);
-	border: 1px solid var(--gm-border);
-	box-shadow: var(--gm-shadow);
+	border: 1px solid rgba(14, 116, 144, 0.15);
+	box-shadow: 0 8px 20px rgba(15, 47, 68, 0.06);
 	font-size: 0.72rem;
 	font-weight: 800;
 	letter-spacing: 0.06em;
 	text-transform: uppercase;
-	color: var(--gm-navy);
+	color: var(--hero-teal-deep);
 	margin-bottom: 1.25rem;
 }
 
@@ -560,29 +578,39 @@ h1, h2, h3, h4, h5 {
 	width: 0.5rem;
 	height: 0.5rem;
 	border-radius: 50%;
-	background: var(--gm-green);
-	box-shadow: 0 0 0 0 rgba(30, 132, 73, 0.5);
+	background: var(--hero-teal);
+	box-shadow: 0 0 0 0 rgba(15, 118, 110, 0.45);
 	animation: gm-pulse 2s infinite;
 }
 
 @keyframes gm-pulse {
-	0% { box-shadow: 0 0 0 0 rgba(30, 132, 73, 0.45); }
-	70% { box-shadow: 0 0 0 10px rgba(30, 132, 73, 0); }
-	100% { box-shadow: 0 0 0 0 rgba(30, 132, 73, 0); }
+	0% { box-shadow: 0 0 0 0 rgba(15, 118, 110, 0.45); }
+	70% { box-shadow: 0 0 0 10px rgba(15, 118, 110, 0); }
+	100% { box-shadow: 0 0 0 0 rgba(15, 118, 110, 0); }
 }
 
 .gm-hero__title {
-	font-size: clamp(2rem, 6vw, 3.5rem);
+	font-size: clamp(2rem, 5.5vw, 3.25rem);
 	font-weight: 900;
 	margin-bottom: 1rem;
+	color: var(--hero-ink);
+	line-height: 1.08;
+}
+
+.gm-hero__title-accent {
+	background: linear-gradient(120deg, #0f766e 0%, #0284c7 55%, #1d4ed8 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 .gm-hero__lead {
 	font-size: 1.05rem;
-	color: var(--gm-muted);
+	color: #475569;
 	font-weight: 500;
 	max-width: 36rem;
 	margin: 0 auto 1.5rem;
+	line-height: 1.7;
 }
 
 .gm-hero__bullets {
@@ -597,18 +625,19 @@ h1, h2, h3, h4, h5 {
 	align-items: center;
 	gap: 0.75rem;
 	padding: 0.85rem 1rem;
-	background: var(--gm-white);
-	border: 1px solid var(--gm-border);
+	background: rgba(255, 255, 255, 0.9);
+	border: 1px solid rgba(14, 116, 144, 0.12);
 	border-radius: var(--gm-radius);
-	box-shadow: var(--gm-shadow);
+	box-shadow: 0 6px 18px rgba(15, 47, 68, 0.05);
 	font-size: 0.9rem;
 	font-weight: 700;
+	color: var(--hero-ink);
 	transition: transform var(--gm-transition), box-shadow var(--gm-transition);
 }
 
 .gm-hero__bullet:hover {
 	transform: translateY(-3px);
-	box-shadow: var(--gm-shadow-hover);
+	box-shadow: 0 14px 28px rgba(15, 47, 68, 0.1);
 }
 
 .gm-hero__check {
@@ -619,8 +648,8 @@ h1, h2, h3, h4, h5 {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: var(--gm-green-soft);
-	color: var(--gm-green);
+	background: var(--hero-mint);
+	color: var(--hero-teal-deep);
 	font-size: 0.75rem;
 	font-weight: 800;
 }
@@ -631,56 +660,128 @@ h1, h2, h3, h4, h5 {
 	gap: 0.75rem;
 }
 
+.gm-hero__btn-primary {
+	background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
+	color: var(--gm-white);
+	box-shadow: 0 12px 24px rgba(234, 88, 12, 0.28);
+}
+
+.gm-hero__btn-primary:hover {
+	box-shadow: 0 16px 30px rgba(234, 88, 12, 0.35);
+}
+
+.gm-hero__btn-secondary {
+	background: var(--gm-white);
+	color: var(--hero-teal-deep);
+	border-color: rgba(15, 118, 110, 0.2);
+	box-shadow: 0 6px 16px rgba(15, 47, 68, 0.06);
+}
+
+.gm-hero__btn-secondary:hover {
+	border-color: var(--hero-teal);
+	color: var(--hero-teal);
+}
+
+/* Painel direito — quadro de riscos (referência visual) */
 .gm-hero__visual {
 	display: flex;
-	justify-content: center;
+	min-height: 100%;
 }
 
-.gm-hero__frame {
-	position: relative;
-	width: min(100%, 22rem);
-	background: var(--gm-white);
-	border: 1px solid var(--gm-border);
-	border-radius: calc(var(--gm-radius-lg) + 0.25rem);
-	padding: 1rem;
-	box-shadow: var(--gm-shadow-hover);
-	transition: transform var(--gm-transition), box-shadow var(--gm-transition);
-}
-
-.gm-hero__frame:hover {
-	transform: translateY(-8px);
-	box-shadow: 0 24px 48px rgba(0, 74, 153, 0.18);
-}
-
-.gm-hero__frame img {
+.gm-risk-card {
 	width: 100%;
-	border-radius: var(--gm-radius);
-}
-
-.gm-hero__caption {
-	position: absolute;
-	left: 1.5rem;
-	right: 1.5rem;
-	bottom: 1.5rem;
-	padding: 0.9rem 1rem;
-	border-radius: var(--gm-radius);
-	background: rgba(0, 53, 112, 0.92);
+	padding: 1.5rem 1.35rem;
+	border-radius: 1.35rem;
+	background: linear-gradient(135deg, #0d3b4c 0%, #0a5c4a 55%, #005a44 100%);
+	box-shadow:
+		0 22px 48px rgba(8, 35, 42, 0.28),
+		inset 0 1px 0 rgba(255, 255, 255, 0.12);
 	color: var(--gm-white);
-	backdrop-filter: blur(8px);
 }
 
-.gm-hero__caption small {
-	display: block;
-	font-size: 0.65rem;
+.gm-risk-card__label {
+	margin: 0 0 0.45rem;
+	font-size: 0.72rem;
 	font-weight: 800;
-	letter-spacing: 0.1em;
+	letter-spacing: 0.12em;
 	text-transform: uppercase;
-	color: #9fd4b3;
-	margin-bottom: 0.25rem;
+	color: #86efac;
 }
 
-.gm-hero__caption strong {
-	font-size: 0.875rem;
+.gm-risk-card__title {
+	margin: 0;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid rgba(134, 239, 172, 0.28);
+	font-size: clamp(1.25rem, 2.4vw, 1.55rem);
+	font-weight: 800;
+	line-height: 1.2;
+	letter-spacing: -0.02em;
+	color: var(--gm-white);
+}
+
+.gm-risk-card__list {
+	display: grid;
+	gap: 0.75rem;
+	margin: 1.15rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.gm-risk-card__item {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.85rem;
+	padding: 0.9rem 0.95rem;
+	border-radius: 0.95rem;
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	transition: background var(--gm-transition), border-color var(--gm-transition), transform var(--gm-transition);
+}
+
+.gm-risk-card__item:hover {
+	background: rgba(255, 255, 255, 0.12);
+	border-color: rgba(134, 239, 172, 0.35);
+	transform: translateY(-2px);
+}
+
+.gm-risk-card__icon {
+	flex-shrink: 0;
+	width: 2.75rem;
+	height: 2.75rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 0.7rem;
+	background: var(--gm-white);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+	overflow: hidden;
+}
+
+.gm-risk-card__icon img {
+	width: 1.85rem;
+	height: 1.85rem;
+	object-fit: contain;
+	display: block;
+}
+
+.gm-risk-card__body {
+	min-width: 0;
+}
+
+.gm-risk-card__body strong {
+	display: block;
+	margin-bottom: 0.25rem;
+	font-size: 0.95rem;
+	font-weight: 800;
+	color: var(--gm-white);
+}
+
+.gm-risk-card__body p {
+	margin: 0;
+	font-size: 0.8rem;
+	font-weight: 500;
+	line-height: 1.45;
+	color: rgba(226, 232, 240, 0.88);
 }
 
 @media (min-width: 640px) {
@@ -696,12 +797,13 @@ h1, h2, h3, h4, h5 {
 
 @media (min-width: 1024px) {
 	.gm-hero {
-		padding: 4.5rem 0 6rem;
+		padding: 2.75rem 0 3rem;
 	}
 
 	.gm-hero__grid {
-		grid-template-columns: 1.15fr 0.85fr;
-		gap: 3rem;
+		grid-template-columns: 1.05fr 0.95fr;
+		gap: 2.75rem;
+		align-items: center;
 	}
 
 	.gm-hero__content {
@@ -714,6 +816,14 @@ h1, h2, h3, h4, h5 {
 
 	.gm-hero__actions {
 		justify-content: flex-start;
+	}
+
+	.gm-risk-card {
+		padding: 1.75rem 1.5rem;
+	}
+
+	.gm-risk-card__list {
+		gap: 0.85rem;
 	}
 }
 
@@ -1014,14 +1124,14 @@ h1, h2, h3, h4, h5 {
 /* MVP banner                                                                 */
 /* -------------------------------------------------------------------------- */
 .gm-mvp {
-	padding: 0 0 2rem;
+	padding: 0 0 1.25rem;
 }
 
 .gm-mvp__box {
 	width: min(100% - 2rem, 48rem);
 	margin: 0 auto;
 	text-align: center;
-	padding: 2rem 1.5rem;
+	padding: 1.35rem 1.25rem;
 	border-radius: var(--gm-radius-lg);
 	background: var(--gm-navy-soft);
 	border: 1px solid rgba(0, 74, 153, 0.12);
@@ -1130,7 +1240,7 @@ h1, h2, h3, h4, h5 {
 .gm-contact {
 	background: linear-gradient(160deg, #003570 0%, #004a99 45%, #16653a 100%);
 	color: var(--gm-white);
-	padding: 4.5rem 0;
+	padding: 3rem 0;
 }
 
 .gm-contact__grid {
