@@ -1,0 +1,52 @@
+/* GiftMed Tema — estilos complementares ao Tailwind CDN */
+
+body {
+	font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.bg-mesh {
+	background-color: #f8fafc;
+	background-image:
+		radial-gradient(at 0% 0%, rgba(0, 168, 150, 0.08) 0px, transparent 50%),
+		radial-gradient(at 50% 0%, rgba(2, 35, 41, 0.03) 0px, transparent 50%),
+		radial-gradient(at 100% 0%, rgba(249, 115, 22, 0.05) 0px, transparent 50%);
+}
+
+.text-gradient-teal {
+	background: linear-gradient(135deg, #005b5c 0%, #00a896 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.glow-teal:hover {
+	box-shadow: 0 20px 40px -15px rgba(0, 168, 150, 0.25);
+}
+
+/* Logo personalizado do WordPress */
+.custom-logo-link {
+	display: flex;
+	align-items: center;
+}
+
+.custom-logo {
+	max-height: 48px;
+	width: auto;
+}
+
+/* Menu principal: remove marcadores padrão dos <li> */
+.menu,
+.menu li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+/* Excerpt sem margem extra nos cards */
+.giftmed-card p,
+#desafio .text-xs p,
+#como-funciona .text-\[11px\] p,
+#funcionalidades .text-xs p,
+#equipe .text-xs p {
+	margin: 0;
+}

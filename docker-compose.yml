@@ -41,6 +41,7 @@ services:
     volumes:
       - wp_data:/var/www/html
       - ./wp-content:/var/www/html/wp-content
+      - ./giftmedtema:/var/www/html/wp-content/themes/giftmedtema
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     networks:
       - wordpress
