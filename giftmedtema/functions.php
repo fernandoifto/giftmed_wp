@@ -56,40 +56,34 @@ add_action( 'after_setup_theme', 'giftmedtema_setup' );
  * Enfileira estilos e scripts.
  */
 function giftmedtema_scripts() {
+	$version = wp_get_theme()->get( 'Version' );
+
 	wp_enqueue_style(
 		'giftmedtema-fonts',
-		'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap',
+		'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap',
 		array(),
 		null
-	);
-
-	wp_enqueue_script(
-		'giftmedtema-tailwind',
-		'https://cdn.tailwindcss.com',
-		array(),
-		null,
-		false
 	);
 
 	wp_enqueue_style(
 		'giftmedtema-style',
 		get_stylesheet_uri(),
 		array( 'giftmedtema-fonts' ),
-		wp_get_theme()->get( 'Version' )
+		$version
 	);
 
 	wp_enqueue_style(
 		'giftmedtema-theme',
 		giftmedtema_asset( 'assets/css/theme.css' ),
 		array( 'giftmedtema-style' ),
-		wp_get_theme()->get( 'Version' )
+		$version
 	);
 
 	wp_enqueue_script(
 		'giftmedtema-theme',
 		giftmedtema_asset( 'assets/js/theme.js' ),
 		array(),
-		wp_get_theme()->get( 'Version' ),
+		$version,
 		true
 	);
 }
@@ -102,7 +96,7 @@ add_action( 'wp_enqueue_scripts', 'giftmedtema_scripts' );
  * @return array
  */
 function giftmedtema_nav_link_attributes( $atts ) {
-	$atts['class'] = 'hover:text-teal-600 transition-colors';
+	$atts['class'] = 'gm-nav-link';
 	return $atts;
 }
 add_filter( 'nav_menu_link_attributes', 'giftmedtema_nav_link_attributes' );
@@ -126,7 +120,7 @@ function giftmedtema_fallback_menu( $args ) {
 	echo '<ul class="' . $menu_class . '">';
 	foreach ( $items as $url => $label ) {
 		printf(
-			'<li><a href="%s" class="hover:text-teal-600 transition-colors">%s</a></li>',
+			'<li><a href="%s" class="gm-nav-link">%s</a></li>',
 			esc_url( home_url( '/' ) . $url ),
 			esc_html( $label )
 		);

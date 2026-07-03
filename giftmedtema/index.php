@@ -8,29 +8,31 @@
 get_header();
 ?>
 
-<main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-	<?php if ( have_posts() ) : ?>
-		<?php
-		while ( have_posts() ) :
-			the_post();
-			?>
-			<article <?php post_class( 'mb-12 pb-12 border-b border-slate-100' ); ?>>
-				<h1 class="text-3xl font-black text-slate-900 mb-4">
-					<a href="<?php the_permalink(); ?>" class="hover:text-teal-600 transition-colors"><?php the_title(); ?></a>
-				</h1>
-				<div class="prose prose-slate max-w-none text-slate-600 leading-relaxed">
-					<?php the_content(); ?>
-				</div>
-			</article>
-		<?php endwhile; ?>
+<main class="gm-section">
+	<div class="gm-container" style="max-width: 48rem;">
+		<?php if ( have_posts() ) : ?>
+			<?php
+			while ( have_posts() ) :
+				the_post();
+				?>
+				<article <?php post_class( 'gm-card reveal is-visible' ); ?> style="margin-bottom: 1.5rem;">
+					<h1 class="gm-title" style="font-size: 1.75rem; margin-bottom: 1rem;">
+						<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+					</h1>
+					<div class="gm-card__text">
+						<?php the_content(); ?>
+					</div>
+				</article>
+			<?php endwhile; ?>
 
-		<div class="flex justify-between text-sm font-bold text-teal-700">
-			<div><?php previous_posts_link( __( '← Anteriores', 'giftmedtema' ) ); ?></div>
-			<div><?php next_posts_link( __( 'Próximos →', 'giftmedtema' ) ); ?></div>
-		</div>
-	<?php else : ?>
-		<p class="text-slate-600"><?php esc_html_e( 'Nenhum conteúdo encontrado.', 'giftmedtema' ); ?></p>
-	<?php endif; ?>
+			<div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--gm-navy);">
+				<div><?php previous_posts_link( __( '← Anteriores', 'giftmedtema' ) ); ?></div>
+				<div><?php next_posts_link( __( 'Próximos →', 'giftmedtema' ) ); ?></div>
+			</div>
+		<?php else : ?>
+			<p class="gm-card__text"><?php esc_html_e( 'Nenhum conteúdo encontrado.', 'giftmedtema' ); ?></p>
+		<?php endif; ?>
+	</div>
 </main>
 
 <?php
