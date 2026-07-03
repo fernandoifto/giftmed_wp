@@ -113,7 +113,6 @@ function giftmedtema_fallback_menu( $args ) {
 		'#como-funciona'   => __( 'Como Funciona', 'giftmedtema' ),
 		'#funcionalidades' => __( 'Recursos', 'giftmedtema' ),
 		'#impacto'         => __( 'Impacto', 'giftmedtema' ),
-		'#equipe'          => __( 'Equipe', 'giftmedtema' ),
 	);
 
 	$menu_class = isset( $args['menu_class'] ) ? esc_attr( $args['menu_class'] ) : '';
