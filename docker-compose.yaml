@@ -27,15 +27,15 @@ services:
     expose:
       - "80"
     ports:
-      - "${WORDPRESS_PORT:-8080}:80"
+      - "${WORDPRESS_PORT:-8081}:80"
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: ${MYSQL_USER}
       WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
       WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
       WORDPRESS_DEBUG: ${WORDPRESS_DEBUG:-0}
-      WP_HOME: ${WP_HOME:-http://localhost:8080}
-      WP_SITEURL: ${WP_SITEURL:-http://localhost:8080}
+      WP_HOME: ${WP_HOME:-http://localhost:8081}
+      WP_SITEURL: ${WP_SITEURL:-http://localhost:8081}
       GIFTMED_SEED_NOTICIAS: ${GIFTMED_SEED_NOTICIAS:-0}
       WORDPRESS_AUTH_KEY: ${WORDPRESS_AUTH_KEY:-}
       WORDPRESS_SECURE_AUTH_KEY: ${WORDPRESS_SECURE_AUTH_KEY:-}
