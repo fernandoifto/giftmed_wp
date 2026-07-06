@@ -168,12 +168,12 @@
 			<nav class="gm-footer__col" aria-label="<?php esc_attr_e( 'Navegação do site', 'giftmedtema' ); ?>">
 				<strong><?php esc_html_e( 'Navegação', 'giftmedtema' ); ?></strong>
 				<ul>
-					<li><a href="<?php echo esc_url( home_url( '/#desafio' ) ); ?>"><?php esc_html_e( 'O Desafio', 'giftmedtema' ); ?></a></li>
+					<li><a href="<?php echo esc_url( home_url( '/#noticias' ) ); ?>"><?php esc_html_e( 'Notícias', 'giftmedtema' ); ?></a></li>
 					<li><a href="<?php echo esc_url( home_url( '/#solucao' ) ); ?>"><?php esc_html_e( 'A Solução', 'giftmedtema' ); ?></a></li>
+					<li><a href="<?php echo esc_url( home_url( '/#desafio' ) ); ?>"><?php esc_html_e( 'O Desafio', 'giftmedtema' ); ?></a></li>
 					<li><a href="<?php echo esc_url( home_url( '/#como-funciona' ) ); ?>"><?php esc_html_e( 'Como Funciona', 'giftmedtema' ); ?></a></li>
 					<li><a href="<?php echo esc_url( home_url( '/#funcionalidades' ) ); ?>"><?php esc_html_e( 'Recursos', 'giftmedtema' ); ?></a></li>
 					<li><a href="<?php echo esc_url( home_url( '/#impacto' ) ); ?>"><?php esc_html_e( 'Impacto', 'giftmedtema' ); ?></a></li>
-					<li><a href="<?php echo esc_url( home_url( '/#equipe' ) ); ?>"><?php esc_html_e( 'Equipe', 'giftmedtema' ); ?></a></li>
 				</ul>
 			</nav>
 

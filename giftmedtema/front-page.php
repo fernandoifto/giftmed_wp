@@ -11,139 +11,92 @@ $theme_img    = giftmedtema_asset( 'assets/img' );
 $img_agua     = $theme_img . '/agua.png';
 $img_saude    = $theme_img . '/saude.png';
 $img_ambiente = $theme_img . '/ambiente.png';
-$img_logo     = $theme_img . '/giftmedquadrado.png';
+$noticias     = giftmedtema_get_noticias_items( 5 );
+$noticias_url = giftmedtema_get_noticias_archive_url();
+
+$platform_bullets = array(
+	__( 'Acesso ampliado a essenciais', 'giftmedtema' ),
+	__( 'Redução do descarte químico', 'giftmedtema' ),
+	__( 'Economia para a Gestão Pública', 'giftmedtema' ),
+	__( 'Gestão 100% Rastreável', 'giftmedtema' ),
+);
 ?>
 
-<section id="hero" class="gm-hero" aria-labelledby="gm-hero-title">
-	<div class="gm-container gm-hero__grid">
-		<div class="gm-hero__content reveal">
-			<div class="gm-hero__badge">
-				<span class="gm-hero__badge-dot" aria-hidden="true"></span>
-				<span><?php esc_html_e( 'Plataforma de Saúde Sustentável', 'giftmedtema' ); ?></span>
-			</div>
-
-			<h1 id="gm-hero-title" class="gm-hero__title">
-				<?php esc_html_e( 'Tecnologia Social para', 'giftmedtema' ); ?>
-				<br><span class="gm-hero__title-accent"><?php esc_html_e( 'Farmácia Solidária', 'giftmedtema' ); ?></span>
-			</h1>
-
-			<p class="gm-hero__lead">
-				<?php esc_html_e( 'Transformando medicamentos sem uso em acesso à saúde para quem precisa. Conectamos cidadãos, profissionais, hospitais e gestores públicos em uma rede totalmente rastreável.', 'giftmedtema' ); ?>
-			</p>
-
-			<div class="gm-hero__bullets">
-				<?php
-				$hero_bullets = array(
-					__( 'Acesso ampliado a essenciais', 'giftmedtema' ),
-					__( 'Redução do descarte químico', 'giftmedtema' ),
-					__( 'Economia para a Gestão Pública', 'giftmedtema' ),
-					__( 'Gestão 100% Rastreável', 'giftmedtema' ),
-				);
-				foreach ( $hero_bullets as $i => $bullet ) :
-					?>
-					<div class="gm-hero__bullet reveal reveal-delay-<?php echo esc_attr( (string) ( ( $i % 4 ) + 1 ) ); ?>">
-						<span class="gm-hero__check" aria-hidden="true">✓</span>
-						<span><?php echo esc_html( $bullet ); ?></span>
-					</div>
-				<?php endforeach; ?>
-			</div>
-
-			<div class="gm-hero__actions">
-				<a href="#contato" class="gm-btn gm-hero__btn-primary"><?php esc_html_e( 'Solicitar Demonstração', 'giftmedtema' ); ?></a>
-				<a href="#solucao" class="gm-btn gm-hero__btn-secondary"><?php esc_html_e( 'Conhecer a Plataforma', 'giftmedtema' ); ?></a>
-			</div>
-		</div>
-
-		<div class="gm-hero__visual reveal reveal-delay-2">
-			<aside class="gm-risk-board" aria-labelledby="gm-risk-title">
-				<header class="gm-risk-board__head">
-					<p class="gm-risk-board__label"><?php esc_html_e( 'Atenção', 'giftmedtema' ); ?></p>
-					<h2 id="gm-risk-title" class="gm-risk-board__title">
-						<?php esc_html_e( 'Riscos do Descarte Incorreto', 'giftmedtema' ); ?>
-					</h2>
-				</header>
-
-				<article class="gm-risk-board__featured">
-					<span class="gm-risk-board__icon gm-risk-board__icon--lg">
-						<img src="<?php echo esc_url( $img_agua ); ?>" alt="" width="72" height="72">
-					</span>
-					<div>
-						<strong><?php esc_html_e( 'Contaminação da Água', 'giftmedtema' ); ?></strong>
-						<p><?php esc_html_e( 'Rios, lagos e lençóis freáticos podem ser contaminados, afetando ecossistemas e a água potável.', 'giftmedtema' ); ?></p>
-					</div>
-				</article>
-
-				<div class="gm-risk-board__grid">
-					<article class="gm-risk-board__mini">
-						<span class="gm-risk-board__icon">
-							<img src="<?php echo esc_url( $img_saude ); ?>" alt="" width="56" height="56">
-						</span>
-						<strong><?php esc_html_e( 'Riscos à Saúde', 'giftmedtema' ); ?></strong>
-						<p><?php esc_html_e( 'Consumo acidental ou contato com substâncias ativas pode causar intoxicações e outros problemas.', 'giftmedtema' ); ?></p>
-					</article>
-					<article class="gm-risk-board__mini">
-						<span class="gm-risk-board__icon">
-							<img src="<?php echo esc_url( $img_ambiente ); ?>" alt="" width="56" height="56">
-						</span>
-						<strong><?php esc_html_e( 'Impacto Ambiental', 'giftmedtema' ); ?></strong>
-						<p><?php esc_html_e( 'Resíduos farmacêuticos afetam fauna, flora e desequilibram ecossistemas inteiros.', 'giftmedtema' ); ?></p>
-					</article>
-				</div>
-			</aside>
-		</div>
-	</div>
-</section>
-
-<section id="desafio" class="gm-section gm-section--white">
+<section id="hero" class="gm-hero gm-hero--news" aria-labelledby="noticias-heading">
 	<div class="gm-container">
-		<div class="gm-section__head reveal">
-			<span class="gm-eyebrow gm-eyebrow--terra"><?php esc_html_e( 'Cenário Crítico', 'giftmedtema' ); ?></span>
-			<h2 class="gm-title"><?php esc_html_e( 'O problema que queremos resolver', 'giftmedtema' ); ?></h2>
-			<p><?php esc_html_e( 'Milhões de medicamentos são descartados de forma incorreta anualmente, agredindo o meio ambiente, enquanto milhares de cidadãos vulneráveis enfrentam dificuldades para acessar tratamentos essenciais.', 'giftmedtema' ); ?></p>
-		</div>
+		<aside id="noticias" class="gm-hero__news reveal" aria-labelledby="noticias-heading">
+			<header class="gm-hero__news-head">
+				<div class="gm-hero__news-head-text">
+					<p class="gm-hero__news-label">
+						<span class="gm-hero__news-live" aria-hidden="true"></span>
+						<?php esc_html_e( 'Atualizações', 'giftmedtema' ); ?>
+					</p>
+					<h2 id="noticias-heading" class="gm-hero__news-title"><?php esc_html_e( 'Notícias', 'giftmedtema' ); ?></h2>
+				</div>
+			</header>
 
-		<div class="gm-grid-4">
-			<?php
-			$desafio_query = giftmedtema_query_by_category( 'desafio' );
-			if ( $desafio_query->have_posts() ) :
-				$i = 0;
-				while ( $desafio_query->have_posts() ) :
-					$desafio_query->the_post();
-					$icone = giftmedtema_meta( get_the_ID(), 'icone', '💊' );
-					++$i;
-					?>
-					<article class="gm-card reveal reveal-delay-<?php echo esc_attr( (string) min( $i, 4 ) ); ?>">
-						<div class="gm-card__icon" aria-hidden="true"><?php echo esc_html( $icone ); ?></div>
-						<h3 class="gm-card__title"><?php the_title(); ?></h3>
-						<div class="gm-card__text"><?php the_excerpt(); ?></div>
-					</article>
-					<?php
-				endwhile;
-				wp_reset_postdata();
-			else :
-				$desafio_fallback = array(
-					array( '💰', __( 'Desperdício Financeiro', 'giftmedtema' ), __( 'Perda de recursos com remédios que vencem sem utilização nas residências.', 'giftmedtema' ) ),
-					array( '🌱', __( 'Impactos Ambientais', 'giftmedtema' ), __( 'Riscos severos decorrentes do descarte inadequado de componentes químicos.', 'giftmedtema' ) ),
-					array( '🏥', __( 'Sobrecarga do SUS', 'giftmedtema' ), __( 'Aumento da pressão assistencial por descontinuidade de tratamentos primários.', 'giftmedtema' ) ),
-					array( '💊', __( 'Redução do Acesso', 'giftmedtema' ), __( 'Dificuldade de fornecimento de medicação contínua para populações isoladas.', 'giftmedtema' ) ),
-				);
-				foreach ( $desafio_fallback as $i => $card ) :
-					?>
-					<article class="gm-card reveal reveal-delay-<?php echo esc_attr( (string) ( $i + 1 ) ); ?>">
-						<div class="gm-card__icon" aria-hidden="true"><?php echo esc_html( $card[0] ); ?></div>
-						<h3 class="gm-card__title"><?php echo esc_html( $card[1] ); ?></h3>
-						<p class="gm-card__text"><?php echo esc_html( $card[2] ); ?></p>
-					</article>
-				<?php endforeach; ?>
+			<?php if ( ! empty( $noticias ) ) : ?>
+				<div class="gm-news-panel">
+					<?php giftmedtema_render_noticia_card( $noticias[0], 1, 'featured' ); ?>
+
+					<?php if ( count( $noticias ) > 1 ) : ?>
+						<div class="gm-news-feed" role="list">
+							<?php
+							foreach ( array_slice( $noticias, 1, 4 ) as $index => $item ) {
+								giftmedtema_render_noticia_card( $item, $index + 2, 'card' );
+							}
+							?>
+						</div>
+					<?php endif; ?>
+
+					<a href="<?php echo esc_url( $noticias_url ); ?>" class="gm-hero__news-more">
+						<span><?php esc_html_e( 'Mais notícias', 'giftmedtema' ); ?></span>
+						<span aria-hidden="true">→</span>
+					</a>
+				</div>
+			<?php else : ?>
+				<p class="gm-hero__news-empty">
+					<?php esc_html_e( 'Nenhuma notícia publicada. Cadastre posts na categoria Notícias pelo painel.', 'giftmedtema' ); ?>
+				</p>
 			<?php endif; ?>
-		</div>
+		</aside>
 	</div>
 </section>
 
-<section id="solucao" class="gm-section gm-section--soft gm-solucao">
+<section id="solucao" class="gm-section gm-section--soft gm-solucao" aria-labelledby="gm-platform-title">
 	<div class="gm-container">
 		<div class="gm-solucao__grid">
-			<div class="gm-solucao__intro reveal">
+			<div class="gm-solucao__platform reveal" id="plataforma">
+				<div class="gm-hero__badge">
+					<span class="gm-hero__badge-dot" aria-hidden="true"></span>
+					<span><?php esc_html_e( 'Plataforma de Saúde Sustentável', 'giftmedtema' ); ?></span>
+				</div>
+
+				<h1 id="gm-platform-title" class="gm-hero__title">
+					<?php esc_html_e( 'Tecnologia Social para', 'giftmedtema' ); ?>
+					<br><span class="gm-hero__title-accent"><?php esc_html_e( 'Farmácia Solidária', 'giftmedtema' ); ?></span>
+				</h1>
+
+				<p class="gm-hero__lead">
+					<?php esc_html_e( 'Transformando medicamentos sem uso em acesso à saúde para quem precisa. Conectamos cidadãos, profissionais, hospitais e gestores públicos em uma rede totalmente rastreável.', 'giftmedtema' ); ?>
+				</p>
+
+				<div class="gm-hero__bullets">
+					<?php foreach ( $platform_bullets as $i => $bullet ) : ?>
+						<div class="gm-hero__bullet reveal reveal-delay-<?php echo esc_attr( (string) ( ( $i % 4 ) + 1 ) ); ?>">
+							<span class="gm-hero__check" aria-hidden="true">✓</span>
+							<span><?php echo esc_html( $bullet ); ?></span>
+						</div>
+					<?php endforeach; ?>
+				</div>
+
+				<div class="gm-hero__actions">
+					<a href="#contato" class="gm-btn gm-hero__btn-primary"><?php esc_html_e( 'Solicitar Demonstração', 'giftmedtema' ); ?></a>
+					<a href="#como-funciona" class="gm-btn gm-hero__btn-secondary"><?php esc_html_e( 'Conhecer a Plataforma', 'giftmedtema' ); ?></a>
+				</div>
+			</div>
+
+			<div class="gm-solucao__intro reveal reveal-delay-2">
 				<span class="gm-eyebrow gm-eyebrow--navy"><?php esc_html_e( 'Inovação Digital', 'giftmedtema' ); ?></span>
 				<h2 class="gm-title">
 					<?php esc_html_e( 'O que é a', 'giftmedtema' ); ?>
@@ -179,29 +132,139 @@ $img_logo     = $theme_img . '/giftmedquadrado.png';
 					</ul>
 				</div>
 			</div>
+		</div>
+	</div>
+</section>
 
-			<aside class="gm-solucao__brand reveal reveal-delay-2" aria-labelledby="gm-slogan-title">
-				<figure class="gm-solucao__logo">
-					<img
-						src="<?php echo esc_url( $img_logo ); ?>"
-						alt="<?php esc_attr_e( 'GiftMed — Conectando Saúde e Solidariedade', 'giftmedtema' ); ?>"
-						width="220"
-						height="220"
-						loading="lazy"
-						decoding="async"
-					>
-				</figure>
+<section id="desafio" class="gm-section gm-desafio-section">
+	<div class="gm-container">
+		<div class="gm-section__head reveal">
+			<span class="gm-eyebrow gm-eyebrow--terra"><?php esc_html_e( 'O Desafio', 'giftmedtema' ); ?></span>
+			<h2 class="gm-title"><?php esc_html_e( 'Medicamentos sem uso, vidas sem acesso', 'giftmedtema' ); ?></h2>
+			<p><?php esc_html_e( 'O descarte incorreto, o cenário crítico da saúde pública e a falta de acesso a tratamentos formam um mesmo problema — e a GiftMed nasceu para resolvê-lo de ponta a ponta.', 'giftmedtema' ); ?></p>
+		</div>
 
-				<blockquote class="gm-solucao__quote">
-					<p id="gm-slogan-title"><?php esc_html_e( 'Seu remédio pode curar mais do que você imagina.', 'giftmedtema' ); ?></p>
-					<footer><?php esc_html_e( 'Cada doação rastreada transforma desperdício em cuidado — unindo saúde, solidariedade e tecnologia em um só fluxo.', 'giftmedtema' ); ?></footer>
-				</blockquote>
+		<div class="gm-topics">
+			<article class="gm-topic-card gm-topic-card--risk reveal reveal-delay-1">
+				<header class="gm-topic-card__head">
+					<span class="gm-topic-card__icon" aria-hidden="true">⚠️</span>
+					<div>
+						<p class="gm-topic-card__label"><?php esc_html_e( 'Atenção', 'giftmedtema' ); ?></p>
+						<h3><?php esc_html_e( 'Riscos do Descarte Incorreto', 'giftmedtema' ); ?></h3>
+					</div>
+				</header>
+				<p class="gm-topic-card__summary">
+					<?php esc_html_e( 'Princípios ativos no lixo comum contaminam solo e água, aumentam intoxicações acidentais e desequilibram ecossistemas.', 'giftmedtema' ); ?>
+				</p>
+				<ul class="gm-topic-card__points">
+					<li>
+						<span class="gm-topic-card__point-icon">
+							<img src="<?php echo esc_url( $img_agua ); ?>" alt="" width="44" height="44" loading="lazy">
+						</span>
+						<div>
+							<strong><?php esc_html_e( 'Contaminação da Água', 'giftmedtema' ); ?></strong>
+							<span><?php esc_html_e( 'Rios, lagos e lençóis freáticos podem ser afetados.', 'giftmedtema' ); ?></span>
+						</div>
+					</li>
+					<li>
+						<span class="gm-topic-card__point-icon">
+							<img src="<?php echo esc_url( $img_saude ); ?>" alt="" width="44" height="44" loading="lazy">
+						</span>
+						<div>
+							<strong><?php esc_html_e( 'Riscos à Saúde', 'giftmedtema' ); ?></strong>
+							<span><?php esc_html_e( 'Consumo acidental pode causar intoxicações.', 'giftmedtema' ); ?></span>
+						</div>
+					</li>
+					<li>
+						<span class="gm-topic-card__point-icon">
+							<img src="<?php echo esc_url( $img_ambiente ); ?>" alt="" width="44" height="44" loading="lazy">
+						</span>
+						<div>
+							<strong><?php esc_html_e( 'Impacto Ambiental', 'giftmedtema' ); ?></strong>
+							<span><?php esc_html_e( 'Resíduos farmacêuticos afetam fauna e flora.', 'giftmedtema' ); ?></span>
+						</div>
+					</li>
+				</ul>
+			</article>
 
-				<div class="gm-solucao__social">
-					<span>@giftmed4</span>
-					<a href="https://www.instagram.com/giftmed4/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Seguir no Instagram →', 'giftmedtema' ); ?></a>
-				</div>
-			</aside>
+			<article class="gm-topic-card gm-topic-card--scenario reveal reveal-delay-2">
+				<header class="gm-topic-card__head">
+					<span class="gm-topic-card__icon" aria-hidden="true">📉</span>
+					<div>
+						<p class="gm-topic-card__label"><?php esc_html_e( 'Contexto', 'giftmedtema' ); ?></p>
+						<h3><?php esc_html_e( 'Cenário Crítico', 'giftmedtema' ); ?></h3>
+					</div>
+				</header>
+				<p class="gm-topic-card__summary">
+					<?php esc_html_e( 'Milhões de medicamentos são descartados de forma inadequada todos os anos, enquanto recursos públicos e privados se perdem sem gerar cuidado.', 'giftmedtema' ); ?>
+				</p>
+				<ul class="gm-topic-card__list">
+					<li><?php esc_html_e( 'Desperdício financeiro em larga escala', 'giftmedtema' ); ?></li>
+					<li><?php esc_html_e( 'Sobrecarga assistencial no SUS', 'giftmedtema' ); ?></li>
+					<li><?php esc_html_e( 'Falta de rastreabilidade nas doações', 'giftmedtema' ); ?></li>
+				</ul>
+			</article>
+
+			<article class="gm-topic-card gm-topic-card--problem reveal reveal-delay-3">
+				<header class="gm-topic-card__head">
+					<span class="gm-topic-card__icon" aria-hidden="true">🎯</span>
+					<div>
+						<p class="gm-topic-card__label"><?php esc_html_e( 'Missão', 'giftmedtema' ); ?></p>
+						<h3><?php esc_html_e( 'O Problema que Queremos Resolver', 'giftmedtema' ); ?></h3>
+					</div>
+				</header>
+				<p class="gm-topic-card__summary">
+					<?php esc_html_e( 'Conectar medicamentos sem uso a quem precisa, com segurança sanitária, rastreabilidade e impacto social mensurável.', 'giftmedtema' ); ?>
+				</p>
+				<ul class="gm-topic-card__list">
+					<li><?php esc_html_e( 'Acesso contínuo a tratamentos essenciais', 'giftmedtema' ); ?></li>
+					<li><?php esc_html_e( 'Redistribuição segura e auditável', 'giftmedtema' ); ?></li>
+					<li><?php esc_html_e( 'Economia circular na saúde pública', 'giftmedtema' ); ?></li>
+				</ul>
+			</article>
+		</div>
+
+		<div class="gm-topics__support">
+			<div class="gm-topics__support-head reveal">
+				<span class="gm-topics__support-line" aria-hidden="true"></span>
+				<h3 class="gm-topics__support-title"><?php esc_html_e( 'Dimensões do problema', 'giftmedtema' ); ?></h3>
+				<span class="gm-topics__support-line" aria-hidden="true"></span>
+			</div>
+			<div class="gm-grid-4">
+				<?php
+				$desafio_query = giftmedtema_query_by_category( 'desafio' );
+				if ( $desafio_query->have_posts() ) :
+					$i = 0;
+					while ( $desafio_query->have_posts() ) :
+						$desafio_query->the_post();
+						$icone = giftmedtema_meta( get_the_ID(), 'icone', '💊' );
+						++$i;
+						?>
+						<article class="gm-card gm-dim-card reveal reveal-delay-<?php echo esc_attr( (string) min( $i, 4 ) ); ?>">
+							<div class="gm-card__icon" aria-hidden="true"><?php echo esc_html( $icone ); ?></div>
+							<h3 class="gm-card__title"><?php the_title(); ?></h3>
+							<div class="gm-card__text"><?php the_excerpt(); ?></div>
+						</article>
+						<?php
+					endwhile;
+					wp_reset_postdata();
+				else :
+					$desafio_fallback = array(
+						array( '💰', __( 'Desperdício Financeiro', 'giftmedtema' ), __( 'Perda de recursos com remédios que vencem sem utilização nas residências.', 'giftmedtema' ) ),
+						array( '🌱', __( 'Impactos Ambientais', 'giftmedtema' ), __( 'Riscos severos decorrentes do descarte inadequado de componentes químicos.', 'giftmedtema' ) ),
+						array( '🏥', __( 'Sobrecarga do SUS', 'giftmedtema' ), __( 'Aumento da pressão assistencial por descontinuidade de tratamentos primários.', 'giftmedtema' ) ),
+						array( '💊', __( 'Redução do Acesso', 'giftmedtema' ), __( 'Dificuldade de fornecimento de medicação contínua para populações isoladas.', 'giftmedtema' ) ),
+					);
+					foreach ( $desafio_fallback as $i => $card ) :
+						?>
+						<article class="gm-card gm-dim-card reveal reveal-delay-<?php echo esc_attr( (string) ( $i + 1 ) ); ?>">
+							<div class="gm-card__icon" aria-hidden="true"><?php echo esc_html( $card[0] ); ?></div>
+							<h3 class="gm-card__title"><?php echo esc_html( $card[1] ); ?></h3>
+							<p class="gm-card__text"><?php echo esc_html( $card[2] ); ?></p>
+						</article>
+					<?php endforeach; ?>
+				<?php endif; ?>
+			</div>
 		</div>
 	</div>
 </section>

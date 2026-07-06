@@ -1,6 +1,24 @@
+# Ambiente local
 .env
+.env.local
+.env.*.local
+
+# Backups e dumps (nunca versionar)
+backup/
+*.sql
+*.sql.gz
+*.tar.gz
+*.zip
+wp-config.php
+
+# WordPress — uploads e cache
 wp-content/uploads/*
 !wp-content/uploads/.gitkeep
 wp-content/cache/
 wp-content/upgrade/
+wp-content/debug.log
+
+# Logs e SO
 *.log
+.DS_Store
+Thumbs.db
