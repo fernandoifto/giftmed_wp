@@ -56,6 +56,45 @@ GIFTMED_SEED_NOTICIAS=1
 
 Em produção mantenha `GIFTMED_SEED_NOTICIAS=0` (padrão). O seed roda uma única vez por instalação.
 
+## FTP (upload de arquivos)
+
+Serviço opcional para enviar `uploads/` e dumps `.sql` sem SSH.
+
+### Subir com FTP (local ou Coolify)
+
+1. Defina no `.env` ou no Coolify:
+   ```env
+   FTP_USER=giftmed
+   FTP_PASSWORD=senha_forte_unica
+   FTP_PUBLIC_HOST=IP_PUBLICO_DO_SERVIDOR
+   ```
+2. No Coolify, libere no firewall do VPS as portas **21** e **30000–30009**.
+3. Redeploy com profile FTP ativo:
+   ```bash
+   docker compose --profile ftp up -d
+   ```
+   No Coolify, em **Docker Compose profiles**, adicione: `ftp`
+
+### Conexão no FileZilla
+
+| Campo | Valor |
+|-------|--------|
+| Host | IP público do servidor |
+| Porta | `21` |
+| Protocolo | FTP |
+| Usuário | `giftmed` (ou `FTP_USER`) |
+| Senha | `FTP_PASSWORD` |
+| Modo | Passivo (PASV) |
+
+### Pastas disponíveis via FTP
+
+| Caminho FTP | Conteúdo |
+|-------------|----------|
+| `/wp-content/uploads/` | Imagens do WordPress |
+| `/deploy/` | Coloque aqui `.sql` e depois importe pelo terminal MySQL |
+
+> FTP envia dados sem criptografia. Use senha forte e desative o profile `ftp` quando não precisar mais.
+
 ## Deploy no Coolify (via GitHub)
 
 Repositório: `https://github.com/fernandoifto/giftmed_wp`

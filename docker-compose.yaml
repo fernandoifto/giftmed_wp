@@ -64,6 +64,26 @@ services:
     networks:
       - wordpress
 
+  ftp:
+    image: stilliard/pure-ftpd:hardened
+    restart: unless-stopped
+    profiles:
+      - ftp
+    environment:
+      PUBLICHOST: ${FTP_PUBLIC_HOST:-127.0.0.1}
+      FTP_USER_NAME: ${FTP_USER:-giftmed}
+      FTP_USER_PASS: ${FTP_PASSWORD:-}
+      FTP_USER_HOME: /home/giftmed
+      ADDED_FLAGS: "--passiveportrange 30000:30009"
+    volumes:
+      - ./wp-content:/home/giftmed/wp-content
+      - ./deploy:/home/giftmed/deploy
+    ports:
+      - "21:21"
+      - "30000-30009:30000-30009"
+    networks:
+      - wordpress
+
 volumes:
   db_data:
   wp_data:
