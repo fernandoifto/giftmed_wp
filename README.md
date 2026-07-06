@@ -8,7 +8,7 @@ Stack: **WordPress 6.8**, **PHP 8.2**, **MySQL 8**, tema customizado `giftmedtem
 
 ```
 giftmedwp/
-├── docker-compose.yml    # Orquestração local e Coolify
+├── docker-compose.yaml   # Orquestração local e Coolify
 ├── .env.example          # Modelo de variáveis (copiar para .env)
 ├── uploads.ini           # Limites de upload PHP
 ├── giftmedtema/          # Tema customizado (montado em wp-content/themes/)
@@ -56,25 +56,26 @@ GIFTMED_SEED_NOTICIAS=1
 
 Em produção mantenha `GIFTMED_SEED_NOTICIAS=0` (padrão). O seed roda uma única vez por instalação.
 
-## Deploy no Coolify
+## Deploy no Coolify (via GitHub)
 
-### 1. Repositório no GitHub
+Repositório: `https://github.com/fernandoifto/giftmed_wp`
 
-```bash
-git checkout -B main
-git add .
-git commit -m "Preparar deploy Coolify"
-git remote add origin https://github.com/SEU_USUARIO/giftmedwp.git
-git push -u origin main
-```
+### Configuração no Coolify
 
-### 2. Novo recurso no Coolify
+1. **Sources** → conecte o GitHub e autorize o repo `fernandoifto/giftmed_wp`
+2. **+ New Resource → Docker Compose**
+3. Preencha:
+   - **Repository:** `fernandoifto/giftmed_wp`
+   - **Branch:** `main`
+   - **Base Directory:** `/`
+   - **Docker Compose file:** `docker-compose.yaml`
+4. No serviço **wordpress**, em **Domains**, adicione o domínio e ative HTTPS
+5. Cole as variáveis de ambiente (seção abaixo)
+6. **Deploy**
 
-1. **New Resource → Docker Compose**
-2. Conecte o repositório GitHub e selecione a branch `main`
-3. Configure as variáveis de ambiente (use senhas **diferentes** do ambiente local)
+> O Coolify aceita `docker-compose.yaml` e `docker-compose.yml` — este projeto usa **`.yaml`**.
 
-### 3. Variáveis obrigatórias no Coolify
+### Variáveis obrigatórias no Coolify
 
 | Variável | Exemplo |
 |----------|---------|
@@ -88,7 +89,9 @@ git push -u origin main
 | `GIFTMED_SEED_NOTICIAS` | `0` |
 | `WORDPRESS_AUTH_KEY` … `WORDPRESS_NONCE_SALT` | gerar em [api.wordpress.org/secret-key/1.1/salt/](https://api.wordpress.org/secret-key/1.1/salt/) |
 
-### 4. Banco de dados
+`WORDPRESS_PORT` é opcional no Coolify (use só no ambiente local).
+
+### Banco de dados
 
 O conteúdo (posts, menus, usuários) está no MySQL, não no Git.
 
@@ -110,11 +113,11 @@ sed -i 's|http://localhost:8080|https://seudominio.com.br|g' giftmed-db.sql
 mysql -u wordpress -p wordpress < giftmed-db.sql
 ```
 
-### 5. Uploads (imagens)
+### Uploads (imagens)
 
 Copie `wp-content/uploads/` do ambiente local para o volume/pasta de uploads no servidor. Sem isso, as imagens das notícias não aparecerão.
 
-### 6. Checklist pós-deploy
+### Checklist pós-deploy
 
 - [ ] Tema **GiftMed Tema** ativo
 - [ ] **Configurações → Links permanentes → Salvar**
