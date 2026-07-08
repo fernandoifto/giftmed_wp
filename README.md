@@ -95,6 +95,33 @@ Serviço opcional para enviar `uploads/` e dumps `.sql` sem SSH.
 
 > FTP envia dados sem criptografia. Use senha forte e desative o profile `ftp` quando não precisar mais.
 
+## Importar site (All-in-One WP Migration)
+
+Se aparecer **"Seu host restringe envios para 2 MB"**, o PHP do servidor ainda está com limite baixo. Após o deploy com `Dockerfile.wordpress`, o limite sobe para **512 MB**.
+
+### Opção A — Enviar backup pelo FTP (recomendado para arquivos grandes)
+
+1. Exporte o site local em **All-in-One WP Migration → Exportar** (gera um `.wpress`)
+2. No FileZilla, conecte ao servidor (usuário `giftmed`, profile `ftp` ativo no Coolify)
+3. Envie o arquivo para:
+   ```
+   /wp-content/ai1wm-backups/
+   ```
+4. No WordPress de produção: **All-in-One WP Migration → Backups**
+5. Clique em **Restaurar** no arquivo enviado
+
+> A opção **FTP** no menu "Importar a partir de" é extensão paga. O envio manual via FileZilla + menu **Backups** funciona na versão gratuita.
+
+### Opção B — Arrastar e soltar (após corrigir limite PHP)
+
+Após redeploy com a imagem customizada, a tela **Importar** deve mostrar **512 MB** em vez de 2 MB.
+
+No Coolify, se o upload ainda falhar com arquivos muito grandes, aumente o timeout do proxy em **Server → Proxy → Configuration**:
+
+```yaml
+- '--entrypoints.https.transport.respondingTimeouts.readTimeout=600s'
+```
+
 ## Deploy no Coolify (via GitHub)
 
 Repositório: `https://github.com/fernandoifto/giftmed_wp`
