@@ -128,7 +128,7 @@ Repositório: `https://github.com/fernandoifto/giftmed_wp`
 | `GIFTMED_SEED_NOTICIAS` | `0` |
 | `WORDPRESS_AUTH_KEY` … `WORDPRESS_NONCE_SALT` | gerar em [api.wordpress.org/secret-key/1.1/salt/](https://api.wordpress.org/secret-key/1.1/salt/) |
 
-`WORDPRESS_PORT` é opcional no Coolify (use só no ambiente local).
+`WORDPRESS_PORT` é só para desenvolvimento local (`docker-compose.override.yaml`). **Não defina** `WORDPRESS_PORT` no Coolify — o proxy acessa o container pela rede interna na porta 80.
 
 ### Banco de dados
 

@@ -1,0 +1,6 @@
+# Carregado automaticamente no dev local (docker compose up).
+# No Coolify este arquivo não é necessário — o proxy usa expose:80 na rede interna.
+services:
+  wordpress:
+    ports:
+      - "${WORDPRESS_PORT:-8080}:80"
