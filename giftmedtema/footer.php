@@ -17,12 +17,12 @@ $tiktok_url    = giftmedtema_mod( 'tiktok_url', 'https://www.tiktok.com/@giftmed
 	<div class="gm-container">
 		<div class="gm-contact-panel reveal">
 			<div class="gm-contact-panel__info">
-				<span class="gm-eyebrow gm-eyebrow--light"><?php esc_html_e( 'Fale Conosco', 'giftmedtema' ); ?></span>
+				<span class="gm-eyebrow gm-eyebrow--light"><?php echo esc_html( giftmedtema_mod( 'contato_eyebrow', __( 'Fale Conosco', 'giftmedtema' ) ) ); ?></span>
 				<h2 id="gm-contact-title" class="gm-title">
-					<?php esc_html_e( 'Vamos conversar sobre a GiftMed', 'giftmedtema' ); ?>
+					<?php echo esc_html( giftmedtema_mod( 'contato_title', __( 'Vamos conversar sobre a GiftMed', 'giftmedtema' ) ) ); ?>
 				</h2>
 				<p class="gm-contact-panel__lead">
-					<?php esc_html_e( 'Fale com a equipe responsável ou solicite uma demonstração da plataforma para o seu município ou instituição.', 'giftmedtema' ); ?>
+					<?php echo esc_html( giftmedtema_mod( 'contato_lead', __( 'Fale com a equipe responsável ou solicite uma demonstração da plataforma para o seu município ou instituição.', 'giftmedtema' ) ) ); ?>
 				</p>
 
 				<div class="gm-contact-panel__channels">
@@ -58,9 +58,9 @@ $tiktok_url    = giftmedtema_mod( 'tiktok_url', 'https://www.tiktok.com/@giftmed
 			<div class="gm-contact-panel__form-wrap reveal reveal-delay-2">
 				<div class="gm-contact-form">
 					<div class="gm-contact-form__head">
-						<span class="gm-contact-form__badge"><?php esc_html_e( 'Demonstração', 'giftmedtema' ); ?></span>
-						<h3><?php esc_html_e( 'Agende uma apresentação', 'giftmedtema' ); ?></h3>
-						<p><?php esc_html_e( 'Preencha os dados e nossa equipe retorna o contato.', 'giftmedtema' ); ?></p>
+						<span class="gm-contact-form__badge"><?php echo esc_html( giftmedtema_mod( 'contato_form_badge', __( 'Demonstração', 'giftmedtema' ) ) ); ?></span>
+						<h3><?php echo esc_html( giftmedtema_mod( 'contato_form_title', __( 'Agende uma apresentação', 'giftmedtema' ) ) ); ?></h3>
+						<p><?php echo esc_html( giftmedtema_mod( 'contato_form_text', __( 'Preencha os dados e nossa equipe retorna o contato.', 'giftmedtema' ) ) ); ?></p>
 					</div>
 
 					<?php if ( isset( $_GET['demo'] ) && 'ok' === $_GET['demo'] ) : // phpcs:ignore WordPress.Security.NonceVerification.Recommended ?>
@@ -95,7 +95,7 @@ $tiktok_url    = giftmedtema_mod( 'tiktok_url', 'https://www.tiktok.com/@giftmed
 						</label>
 
 						<button type="submit" class="gm-btn gm-btn--accent gm-btn--block">
-							<?php esc_html_e( 'Agendar apresentação', 'giftmedtema' ); ?>
+							<?php echo esc_html( giftmedtema_mod( 'contato_form_button', __( 'Agendar apresentação', 'giftmedtema' ) ) ); ?>
 						</button>
 					</form>
 				</div>

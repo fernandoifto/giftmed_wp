@@ -76,3 +76,21 @@ function giftmedtema_should_seed_noticias() {
 
 	return true;
 }
+
+/**
+ * Linhas de textarea → array.
+ *
+ * @param string $raw Texto.
+ * @return string[]
+ */
+function giftmedtema_lines( $raw ) {
+	$lines = preg_split( '/\r\n|\r|\n/', (string) $raw );
+	$out   = array();
+	foreach ( (array) $lines as $line ) {
+		$line = trim( $line );
+		if ( '' !== $line ) {
+			$out[] = $line;
+		}
+	}
+	return $out;
+}

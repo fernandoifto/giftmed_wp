@@ -25,17 +25,32 @@ O banco de dados, dumps `.sql`, ZIPs, idiomas `pt_BR`, temas Twenty* e `wp-conte
 
 Em **Aparência → Personalizar → GiftMed Conteúdo**:
 - Hero / topbar (textos e CTAs)
-- Contato e redes (e-mails, Instagram, YouTube, TikTok)
+- A Solução, O Desafio (cards principais), Como Funciona / Recursos / Impacto (cabeçalhos)
+- Contato e redes (e-mails, Instagram, YouTube, TikTok, textos do formulário)
 - Parceiros (texto, exibir/ocultar, nome, tag, logo)
 
-### Seed de notícias (somente local)
+### Cards das seções (Posts)
+
+Edite como posts normais, filtrando pela categoria:
+
+| Categoria | Seção na home |
+|-----------|----------------|
+| `Desafio` | Dimensões do problema |
+| `Como Funciona` | Etapas do fluxo |
+| `Funcionalidades` | Módulos/recursos |
+| `Impacto` | Métricas social/ambiental/econômico |
+| `Diferenciais` | Cards “Por que a GiftMed é diferente?” |
+| `Notícias` | Painel de notícias |
+
+No editor do post, use o campo **Ícone da seção (emoji)** na barra lateral.
+
+### Seed de conteúdo (somente local)
 
 ```bash
-# Preferível (com WP-CLI no container):
+docker compose exec wordpress wp giftmedtema seed-conteudo --allow-root
+# ou só seções / só notícias:
+docker compose exec wordpress wp giftmedtema seed-secoes --allow-root
 docker compose exec wordpress wp giftmedtema seed-noticias --allow-root
-
-# Ou via env (nunca em production sem GIFTMED_SEED_FORCE=1):
-GIFTMED_SEED_NOTICIAS=1
 ```
 
 ### All-in-One WP Migration

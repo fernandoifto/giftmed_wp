@@ -165,21 +165,21 @@ function giftmedtema_attach_remote_image( $url, $post_id, $title ) {
 }
 
 /**
- * Anexa imagem destacada a partir de URL remota ou arquivo do tema.
+ * Anexa imagem destacada a partir de arquivo do tema (preferido) ou URL remota.
  *
  * @param array<string, string> $post    Dados do post.
  * @param int                   $post_id ID do post.
  */
 function giftmedtema_attach_noticia_image( $post, $post_id ) {
-	if ( ! empty( $post['image_url'] ) ) {
-		$attached = giftmedtema_attach_remote_image( $post['image_url'], $post_id, $post['title'] );
+	if ( ! empty( $post['image'] ) ) {
+		$attached = giftmedtema_attach_theme_image( $post['image'], $post_id, $post['title'] );
 		if ( $attached ) {
 			return;
 		}
 	}
 
-	if ( ! empty( $post['image'] ) ) {
-		giftmedtema_attach_theme_image( $post['image'], $post_id, $post['title'] );
+	if ( ! empty( $post['image_url'] ) ) {
+		giftmedtema_attach_remote_image( $post['image_url'], $post_id, $post['title'] );
 	}
 }
 
@@ -217,56 +217,56 @@ function giftmedtema_get_noticias_seed_posts() {
 			'excerpt' => 'Município fictício do interior passa a registrar doações, triagens e entregas em tempo real, ampliando o acesso a medicamentos essenciais.',
 			'content' => "O município de Nova Aurora, no interior do estado, iniciou a operação da GiftMed em três unidades básicas de saúde. A plataforma passa a registrar doações, triagens e entregas em tempo real.\n\nSegundo a secretaria municipal, a expectativa é ampliar o acesso a medicamentos essenciais e reduzir o descarte irregular de fármacos ainda válidos.\n\nA implantação contou com capacitação de farmacêuticos locais e integração com pontos de coleta comunitários.",
 			'date'    => '2026-06-28 09:30:00',
-			'topic'     => 'saude',
-			'image_url' => 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=640&h=360&fit=crop&q=80',
+			'topic'   => 'saude',
+			'image'   => 'assets/img/noticias/nova-aurora.jpg',
 		),
 		array(
 			'title'   => 'Campanha Remédio Solidário mobiliza 12 mil unidades em sete dias',
 			'excerpt' => 'Ação comunitária fictícia reuniu cidadãos, farmácias parceiras e voluntários em um fluxo totalmente rastreado pela plataforma GiftMed.',
 			'content' => "A campanha Remédio Solidário, realizada em parceria com organizações locais, mobilizou mais de 12 mil unidades de medicamentos em apenas sete dias.\n\nTodas as doações foram cadastradas na GiftMed, passando por triagem farmacêutica antes da redistribuição às farmácias solidárias participantes.\n\nOrganizadores destacaram a transparência do processo e a facilidade de acompanhamento digital por gestores e doadores.",
 			'date'    => '2026-06-14 11:00:00',
-			'topic'     => 'sustentabilidade',
-			'image_url' => 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=640&h=360&fit=crop&q=80',
+			'topic'   => 'sustentabilidade',
+			'image'   => 'assets/img/noticias/campanha-remedio.jpg',
 		),
 		array(
 			'title'   => 'Universidade Vale Verde testa triagem digital com estudantes de farmácia',
 			'excerpt' => 'Projeto-piloto fictício utiliza a GiftMed para simular o fluxo completo de doação, inspeção técnica e registro sanitário.',
 			'content' => "A Universidade Vale Verde iniciou um projeto-piloto que utiliza a GiftMed para simular o fluxo completo de doação, inspeção técnica e registro sanitário.\n\nEstudantes de farmácia participam da triagem supervisionada, registrando laudos e condições de armazenamento diretamente na plataforma.\n\nA iniciativa busca formar profissionais alinhados às boas práticas de farmácias solidárias e rastreabilidade de medicamentos.",
 			'date'    => '2026-05-30 14:15:00',
-			'topic'     => 'pesquisa',
-			'image_url' => 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=640&h=360&fit=crop&q=80',
+			'topic'   => 'pesquisa',
+			'image'   => 'assets/img/noticias/universidade-vale-verde.jpg',
 		),
 		array(
 			'title'   => 'Painel de indicadores aponta queda de 38% no descarte inadequado',
 			'excerpt' => 'Dados simulados de um consórcio intermunicipal mostram redução no descarte incorreto após adoção de coleta orientada e destinação segura.',
 			'content' => "Um consórcio intermunicipal fictício divulgou indicadores do primeiro semestre após a adoção da GiftMed. O painel aponta queda de 38% no descarte inadequado de medicamentos.\n\nGestores atribuem o resultado à combinação de coleta orientada, triagem técnica e destinação ambientalmente segura dos produtos inaptos.\n\nOs municípios participantes passaram a monitorar o fluxo em tempo real por meio de relatórios automatizados.",
 			'date'    => '2026-05-17 08:45:00',
-			'topic'     => 'meio-ambiente',
-			'image_url' => 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=640&h=360&fit=crop&q=80',
+			'topic'   => 'meio-ambiente',
+			'image'   => 'assets/img/noticias/painel-indicadores.jpg',
 		),
 		array(
 			'title'   => 'GiftMed recebe atualização com alertas inteligentes de validade',
 			'excerpt' => 'Nova versão fictícia da plataforma envia avisos automáticos sobre lotes próximos do vencimento, evitando perdas no estoque solidário.',
 			'content' => "A equipe GiftMed lançou uma atualização com alertas inteligentes de validade. O sistema passa a notificar gestores e farmacêuticos sobre lotes próximos do vencimento.\n\nA funcionalidade reduz perdas no estoque solidário e prioriza a redistribuição de medicamentos com prazo mais curto.\n\nOs alertas podem ser configurados por unidade, perfil de usuário e criticidade do item.",
 			'date'    => '2026-05-03 16:20:00',
-			'topic'     => 'tecnologia',
-			'image_url' => 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=640&h=360&fit=crop&q=80',
+			'topic'   => 'tecnologia',
+			'image'   => 'assets/img/noticias/alertas-validade.jpg',
 		),
 		array(
 			'title'   => 'Hospital São Lucas integra doações hospitalares ao estoque solidário',
 			'excerpt' => 'Unidade fictícia passa a encaminhar excedentes não utilizados para triagem e redistribuição com rastreabilidade completa.',
 			'content' => "O Hospital São Lucas, instituição fictícia parceira do projeto, passou a integrar doações hospitalares ao estoque solidário municipal.\n\nExcedentes não utilizados são encaminhados para triagem e, quando aprovados, redistribuídos com rastreabilidade completa na GiftMed.\n\nA parceria reforça a economia circular em saúde e evita o descarte prematuro de insumos em condições adequadas.",
 			'date'    => '2026-04-19 10:00:00',
-			'topic'     => 'saude',
-			'image_url' => 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=640&h=360&fit=crop&q=80',
+			'topic'   => 'saude',
+			'image'   => 'assets/img/noticias/hospital-sao-lucas.jpg',
 		),
 		array(
 			'title'   => 'Secretaria Estadual destaca GiftMed como referência em tecnologia social',
 			'excerpt' => 'Relatório institucional fictício cita a plataforma como modelo de integração entre cidadãos, profissionais e gestores públicos.',
 			'content' => "Um relatório institucional fictício da Secretaria Estadual de Saúde destacou a GiftMed como referência em tecnologia social aplicada a farmácias solidárias.\n\nO documento cita a integração entre cidadãos, profissionais de saúde e gestores públicos como diferencial do modelo.\n\nA publicação recomenda a expansão do uso de plataformas rastreáveis para reduzir desperdício e ampliar o acesso a tratamentos essenciais.",
 			'date'    => '2026-04-05 13:40:00',
-			'topic'     => 'pesquisa',
-			'image_url' => 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=640&h=360&fit=crop&q=80',
+			'topic'   => 'pesquisa',
+			'image'   => 'assets/img/noticias/secretaria-estadual.jpg',
 		),
 	);
 }
@@ -328,6 +328,143 @@ function giftmedtema_seed_noticias_posts() {
 }
 
 /**
+ * Remove posts de uma categoria de seção da home.
+ *
+ * @param string $slug Slug da categoria.
+ */
+function giftmedtema_delete_section_posts( $slug ) {
+	$query = new WP_Query(
+		array(
+			'post_type'              => 'post',
+			'post_status'            => 'any',
+			'category_name'          => $slug,
+			'posts_per_page'         => -1,
+			'fields'                 => 'ids',
+			'no_found_rows'          => true,
+			'update_post_meta_cache' => false,
+			'update_post_term_cache' => false,
+		)
+	);
+
+	foreach ( $query->posts as $post_id ) {
+		wp_delete_post( (int) $post_id, true );
+	}
+}
+
+/**
+ * Insere um post de seção da home.
+ *
+ * @param string $title      Título.
+ * @param string $excerpt    Resumo.
+ * @param int    $term_id    ID da categoria.
+ * @param string $icone      Emoji.
+ * @param int    $menu_order Ordem.
+ * @return int
+ */
+function giftmedtema_insert_section_post( $title, $excerpt, $term_id, $icone = '●', $menu_order = 0 ) {
+	$post_id = wp_insert_post(
+		array(
+			'post_type'    => 'post',
+			'post_status'  => 'publish',
+			'post_title'   => $title,
+			'post_excerpt' => $excerpt,
+			'post_content' => $excerpt,
+			'menu_order'   => (int) $menu_order,
+			'post_author'  => 1,
+		),
+		true
+	);
+
+	if ( ! $post_id || is_wp_error( $post_id ) ) {
+		return 0;
+	}
+
+	wp_set_post_terms( $post_id, array( (int) $term_id ), 'category' );
+	update_post_meta( $post_id, 'icone', $icone );
+
+	return (int) $post_id;
+}
+
+/**
+ * Seed das seções da home (cards editáveis como posts).
+ */
+function giftmedtema_seed_home_sections() {
+	$map = array(
+		'desafio'         => array(
+			'name'  => __( 'Desafio', 'giftmedtema' ),
+			'items' => array(
+				array( '💰', 'Desperdício Financeiro', 'Perda de recursos com remédios que vencem sem utilização nas residências.' ),
+				array( '🌱', 'Impactos Ambientais', 'Riscos severos decorrentes do descarte inadequado de componentes químicos.' ),
+				array( '🏥', 'Sobrecarga do SUS', 'Aumento da pressão assistencial por descontinuidade de tratamentos primários.' ),
+				array( '💊', 'Redução do Acesso', 'Dificuldade de fornecimento de medicação contínua para populações isoladas.' ),
+			),
+		),
+		'como-funciona'   => array(
+			'name'  => __( 'Como Funciona', 'giftmedtema' ),
+			'items' => array(
+				array( '📦', '1. Doação', 'O cidadão realiza a entrega ou o cadastro dos medicamentos disponíveis.' ),
+				array( '🩺', '2. Triagem', 'Profissionais habilitados analisam a integridade, validade e condições sanitárias.' ),
+				array( '🔗', '3. Rastreio', 'Todas as etapas operacionais são monitoradas digitalmente.' ),
+				array( '💊', '4. Redistribuição', 'Medicamentos aprovados são ofertados via Farmácias Solidárias.' ),
+				array( '♻️', '5. Descarte', 'Produtos inaptos recebem destinação final ambientalmente segura.' ),
+			),
+		),
+		'funcionalidades' => array(
+			'name'  => __( 'Funcionalidades', 'giftmedtema' ),
+			'items' => array(
+				array( '📦', 'Gestão de Estoque Solidário', 'Controle completo de lotes e validades vigentes para segurança de entrega.' ),
+				array( '🩺', 'Triagem Farmacêutica Digital', 'Registro técnico imediato das inspeções e laudos de adequação sanitária.' ),
+				array( '🔗', 'Rastreabilidade Completa', 'Mapeamento em tempo real de todo o ciclo percorrido pelo medicamento.' ),
+				array( '📊', 'Indicadores de Impacto', 'Métricas de monitoramento social, ambiental e econômico unificadas.' ),
+				array( '🖥️', 'Painéis Gerenciais', 'Informações estratégicas e relatórios automatizados para tomadas de decisão.' ),
+				array( '🔒', 'Segurança e Conformidade', 'Hospedagem em nuvem de alta segurança com adequação integral à LGPD.' ),
+			),
+		),
+		'impacto'         => array(
+			'name'  => __( 'Impacto', 'giftmedtema' ),
+			'items' => array(
+				array( '🤝', 'Impacto Social', 'Ampliação do acesso a tratamentos e suporte direto a populações em vulnerabilidade.' ),
+				array( '🌱', 'Impacto Ambiental', 'Redução expressiva do descarte inadequado e fomento à economia circular de insumos.' ),
+				array( '💰', 'Impacto Econômico', 'Economia real de recursos financeiros e otimização dos orçamentos públicos de saúde.' ),
+			),
+		),
+		'diferenciais'    => array(
+			'name'  => __( 'Diferenciais', 'giftmedtema' ),
+			'items' => array(
+				array( '🎯', 'Foco em Farmácias Solidárias', 'Solução especializada com orientação técnica para o ciclo solidário de medicamentos.' ),
+				array( '☁️', 'Operação em nuvem', 'Gestão integrada de ponta a ponta, acessível e centralizada.' ),
+				array( '🔗', 'Rastreabilidade total', 'Histórico completo dos lotes em todas as etapas do processo.' ),
+				array( '📈', 'Escalável para municípios', 'Infraestrutura preparada para cidades de qualquer porte.' ),
+				array( '🛡️', 'Conformidade e LGPD', 'Adequação às diretrizes sanitárias vigentes e proteção de dados.' ),
+			),
+		),
+	);
+
+	foreach ( $map as $slug => $data ) {
+		giftmedtema_delete_section_posts( $slug );
+		$term_id = giftmedtema_ensure_category( $data['name'], $slug );
+		if ( ! $term_id ) {
+			continue;
+		}
+		foreach ( $data['items'] as $i => $item ) {
+			giftmedtema_insert_section_post( $item[1], $item[2], $term_id, $item[0], $i + 1 );
+		}
+	}
+}
+
+/**
+ * Seed completo: notícias + seções da home.
+ */
+function giftmedtema_seed_all_content() {
+	giftmedtema_delete_noticias_posts();
+	giftmedtema_seed_noticias_posts();
+	giftmedtema_seed_home_sections();
+	update_option( 'giftmedtema_conteudo_seeded_v7', 1, false );
+	delete_option( 'giftmedtema_noticias_seeded_v6' );
+	delete_option( 'giftmedtema_noticias_seeded_v5' );
+}
+
+/**
  * Hook de seed automático (dev). Preferir WP-CLI.
  */
 function giftmedtema_maybe_seed_noticias() {
@@ -335,41 +472,37 @@ function giftmedtema_maybe_seed_noticias() {
 		return;
 	}
 
-	if ( get_option( 'giftmedtema_noticias_seeded_v5' ) ) {
+	if ( get_option( 'giftmedtema_conteudo_seeded_v7' ) ) {
 		return;
 	}
 
-	giftmedtema_delete_noticias_posts();
-	giftmedtema_seed_noticias_posts();
-
-	update_option( 'giftmedtema_noticias_seeded_v5', 1, false );
-	delete_option( 'giftmedtema_noticias_seeded_v4' );
-	delete_option( 'giftmedtema_noticias_seeded_v1' );
+	giftmedtema_seed_all_content();
 }
 add_action( 'init', 'giftmedtema_maybe_seed_noticias', 30 );
 
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
-	/**
-	 * Recria posts fictícios de notícias.
-	 *
-	 * ## EXAMPLES
-	 *
-	 *     wp giftmedtema seed-noticias
-	 *     wp giftmedtema seed-noticias --force
-	 *
-	 * @when after_wp_load
-	 */
+	WP_CLI::add_command(
+		'giftmedtema seed-conteudo',
+		function ( $args, $assoc_args ) {
+			giftmedtema_seed_all_content();
+			WP_CLI::success( 'Notícias e seções da home recriadas.' );
+		}
+	);
+
 	WP_CLI::add_command(
 		'giftmedtema seed-noticias',
-		function ( $args, $assoc_args ) {
-			$force = isset( $assoc_args['force'] );
-			if ( $force ) {
-				delete_option( 'giftmedtema_noticias_seeded_v5' );
-			}
+		function () {
 			giftmedtema_delete_noticias_posts();
 			giftmedtema_seed_noticias_posts();
-			update_option( 'giftmedtema_noticias_seeded_v5', 1, false );
 			WP_CLI::success( 'Notícias fictícias recriadas.' );
+		}
+	);
+
+	WP_CLI::add_command(
+		'giftmedtema seed-secoes',
+		function () {
+			giftmedtema_seed_home_sections();
+			WP_CLI::success( 'Seções da home recriadas.' );
 		}
 	);
 }

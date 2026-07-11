@@ -17,9 +17,7 @@ require_once GIFTMEDTEMA_DIR . '/inc/setup.php';
 require_once GIFTMEDTEMA_DIR . '/inc/assets.php';
 require_once GIFTMEDTEMA_DIR . '/inc/noticias.php';
 require_once GIFTMEDTEMA_DIR . '/inc/template-tags.php';
+require_once GIFTMEDTEMA_DIR . '/inc/meta-boxes.php';
 require_once GIFTMEDTEMA_DIR . '/inc/forms.php';
 require_once GIFTMEDTEMA_DIR . '/inc/customizer.php';
-
-if ( giftmedtema_should_load_seed() ) {
-	require_once GIFTMEDTEMA_DIR . '/inc/seed.php';
-}
+require_once GIFTMEDTEMA_DIR . '/inc/seed.php';
