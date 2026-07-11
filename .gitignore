@@ -5,6 +5,8 @@
 
 # Backups e dumps (nunca versionar)
 backup/
+deploy/*
+!deploy/.gitkeep
 *.sql
 *.sql.gz
 *.tar.gz
@@ -16,7 +18,13 @@ wp-content/uploads/*
 !wp-content/uploads/.gitkeep
 wp-content/cache/
 wp-content/upgrade/
+wp-content/upgrade-temp-backup/
+wp-content/ai1wm-backups/*.wpress
 wp-content/debug.log
+
+# Temas padrão e idiomas (baixados no ambiente, não versionar)
+wp-content/themes/twenty*/
+wp-content/languages/
 
 # Logs e SO
 *.log

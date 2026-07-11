@@ -14,12 +14,7 @@ $img_ambiente = $theme_img . '/ambiente.png';
 $noticias     = giftmedtema_get_noticias_items( 5 );
 $noticias_url = giftmedtema_get_noticias_archive_url();
 
-$platform_bullets = array(
-	__( 'Acesso ampliado a essenciais', 'giftmedtema' ),
-	__( 'Redução do descarte químico', 'giftmedtema' ),
-	__( 'Economia para a Gestão Pública', 'giftmedtema' ),
-	__( 'Gestão 100% Rastreável', 'giftmedtema' ),
-);
+$platform_bullets = giftmedtema_get_hero_bullets();
 ?>
 
 <section id="hero" class="gm-hero gm-hero--news" aria-labelledby="noticias-heading">
@@ -69,16 +64,16 @@ $platform_bullets = array(
 			<div class="gm-solucao__platform reveal" id="plataforma">
 				<div class="gm-hero__badge">
 					<span class="gm-hero__badge-dot" aria-hidden="true"></span>
-					<span><?php esc_html_e( 'Plataforma de Saúde Sustentável', 'giftmedtema' ); ?></span>
+					<span><?php echo esc_html( giftmedtema_mod( 'hero_badge', __( 'Plataforma de Saúde Sustentável', 'giftmedtema' ) ) ); ?></span>
 				</div>
 
 				<h1 id="gm-platform-title" class="gm-hero__title">
-					<?php esc_html_e( 'Tecnologia Social para', 'giftmedtema' ); ?>
-					<br><span class="gm-hero__title-accent"><?php esc_html_e( 'Farmácia Solidária', 'giftmedtema' ); ?></span>
+					<?php echo esc_html( giftmedtema_mod( 'hero_title', __( 'Tecnologia Social para', 'giftmedtema' ) ) ); ?>
+					<br><span class="gm-hero__title-accent"><?php echo esc_html( giftmedtema_mod( 'hero_title_accent', __( 'Farmácia Solidária', 'giftmedtema' ) ) ); ?></span>
 				</h1>
 
 				<p class="gm-hero__lead">
-					<?php esc_html_e( 'Transformando medicamentos sem uso em acesso à saúde para quem precisa. Conectamos cidadãos, profissionais, hospitais e gestores públicos em uma rede totalmente rastreável.', 'giftmedtema' ); ?>
+					<?php echo esc_html( giftmedtema_mod( 'hero_lead', __( 'Transformando medicamentos sem uso em acesso à saúde para quem precisa. Conectamos cidadãos, profissionais, hospitais e gestores públicos em uma rede totalmente rastreável.', 'giftmedtema' ) ) ); ?>
 				</p>
 
 				<div class="gm-hero__bullets">
@@ -91,8 +86,8 @@ $platform_bullets = array(
 				</div>
 
 				<div class="gm-hero__actions">
-					<a href="#contato" class="gm-btn gm-hero__btn-primary"><?php esc_html_e( 'Solicitar Demonstração', 'giftmedtema' ); ?></a>
-					<a href="#como-funciona" class="gm-btn gm-hero__btn-secondary"><?php esc_html_e( 'Conhecer a Plataforma', 'giftmedtema' ); ?></a>
+					<a href="#contato" class="gm-btn gm-hero__btn-primary"><?php echo esc_html( giftmedtema_mod( 'hero_cta_primary', __( 'Solicitar Demonstração', 'giftmedtema' ) ) ); ?></a>
+					<a href="#como-funciona" class="gm-btn gm-hero__btn-secondary"><?php echo esc_html( giftmedtema_mod( 'hero_cta_secondary', __( 'Conhecer a Plataforma', 'giftmedtema' ) ) ); ?></a>
 				</div>
 			</div>
 
@@ -479,61 +474,17 @@ $platform_bullets = array(
 	</div>
 </section>
 
-<?php
-$parceiros_uri = giftmedtema_asset( 'assets/img/parceiros' );
-$parceiros     = array(
-	array(
-		'file' => 'fapt-1.png',
-		'name' => 'FAPT',
-		'tag'  => __( 'Fomento', 'giftmedtema' ),
-	),
-	array(
-		'file' => 'rede-deser.png',
-		'name' => 'Rede DESER',
-		'tag'  => __( 'Fomento', 'giftmedtema' ),
-	),
-	array(
-		'file' => 'govestado.png',
-		'name' => 'Governo do Tocantins',
-		'tag'  => __( 'Público', 'giftmedtema' ),
-	),
-	array(
-		'file' => 'araguaina.png',
-		'name' => 'Prefeitura de Araguaína',
-		'tag'  => __( 'Público', 'giftmedtema' ),
-	),
-	array(
-		'file' => 'sus.png',
-		'name' => 'SUS',
-		'tag'  => __( 'Público', 'giftmedtema' ),
-	),
-	array(
-		'file' => 'ifto.png',
-		'name' => 'IFTO',
-		'tag'  => __( 'Acadêmico', 'giftmedtema' ),
-	),
-	array(
-		'file' => 'utfpr.png',
-		'name' => 'UTFPR',
-		'tag'  => __( 'Acadêmico', 'giftmedtema' ),
-	),
-	array(
-		'file' => 'ppgep.png',
-		'name' => 'PPGEP',
-		'tag'  => __( 'Acadêmico', 'giftmedtema' ),
-	),
-);
-?>
+<?php $parceiros = giftmedtema_get_parceiros(); ?>
 
 <section id="parceiros" class="gm-section gm-parceiros-section" aria-labelledby="gm-parceiros-title">
 	<div class="gm-container">
 		<header class="gm-parceiros__head reveal">
-			<span class="gm-eyebrow gm-eyebrow--navy"><?php esc_html_e( 'Rede de apoio', 'giftmedtema' ); ?></span>
+			<span class="gm-eyebrow gm-eyebrow--navy"><?php echo esc_html( giftmedtema_mod( 'parceiros_eyebrow', __( 'Rede de apoio', 'giftmedtema' ) ) ); ?></span>
 			<h2 id="gm-parceiros-title" class="gm-title">
-				<?php esc_html_e( 'Instituições que apoiam a GiftMed', 'giftmedtema' ); ?>
+				<?php echo esc_html( giftmedtema_mod( 'parceiros_title', __( 'Instituições que apoiam a GiftMed', 'giftmedtema' ) ) ); ?>
 			</h2>
 			<p class="gm-parceiros__text">
-				<?php esc_html_e( 'O projeto GiftMed é fomentado com recursos do projeto O CDR Médio Norte Tocantins Edital nº 02/2024 — FAPT/SEPLAN, no âmbito da Rede DESER, e conta com parceiros públicos e acadêmicos comprometidos com saúde solidária e descarte consciente.', 'giftmedtema' ); ?>
+				<?php echo esc_html( giftmedtema_mod( 'parceiros_text', __( 'O projeto GiftMed é fomentado com recursos do projeto O CDR Médio Norte Tocantins Edital nº 02/2024 — FAPT/SEPLAN, no âmbito da Rede DESER, e conta com parceiros públicos e acadêmicos comprometidos com saúde solidária e descarte consciente.', 'giftmedtema' ) ) ); ?>
 			</p>
 		</header>
 
@@ -541,7 +492,7 @@ $parceiros     = array(
 			<?php foreach ( $parceiros as $parceiro ) : ?>
 				<figure class="gm-parceiros__item" role="listitem" title="<?php echo esc_attr( $parceiro['name'] . ' — ' . $parceiro['tag'] ); ?>">
 					<img
-						src="<?php echo esc_url( $parceiros_uri . '/' . $parceiro['file'] ); ?>"
+						src="<?php echo esc_url( $parceiro['src'] ); ?>"
 						alt="<?php echo esc_attr( $parceiro['name'] ); ?>"
 						loading="lazy"
 						decoding="async"

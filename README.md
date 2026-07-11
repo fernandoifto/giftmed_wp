@@ -8,14 +8,44 @@ Stack: **WordPress 6.8**, **PHP 8.2**, **MySQL 8**, tema customizado `giftmedtem
 
 ```
 giftmedwp/
-├── docker-compose.yaml   # Orquestração local e Coolify
-├── .env.example          # Modelo de variáveis (copiar para .env)
-├── uploads.ini           # Limites de upload PHP
-├── giftmedtema/          # Tema customizado (montado em wp-content/themes/)
-└── wp-content/           # Plugins, idiomas e temas padrão WP
+├── docker-compose.yaml          # Orquestração local e Coolify
+├── docker-compose.override.yaml # Porta 8080 só no dev local
+├── Dockerfile.wordpress         # Imagem com limite de upload PHP
+├── .env.example                 # Modelo de variáveis
+├── uploads.ini                  # Limites PHP (embutido na imagem)
+├── giftmedtema/                 # Tema customizado (inc/, Customizer, templates)
+├── deploy/                      # Staging FTP (.sql, uploads) — não versionado
+└── wp-content/                  # Plugins, mu-plugins, uploads
+    └── mu-plugins/              # Hardening (AI1WM off por padrão)
 ```
 
-O banco de dados e os arquivos de `wp-content/uploads/` **não** ficam no Git.
+O banco de dados, dumps `.sql`, ZIPs, idiomas `pt_BR`, temas Twenty* e `wp-content/uploads/` **não** ficam no Git.
+
+### Conteúdo editável (Customizer)
+
+Em **Aparência → Personalizar → GiftMed Conteúdo**:
+- Hero / topbar (textos e CTAs)
+- Contato e redes (e-mails, Instagram, YouTube, TikTok)
+- Parceiros (texto, exibir/ocultar, nome, tag, logo)
+
+### Seed de notícias (somente local)
+
+```bash
+# Preferível (com WP-CLI no container):
+docker compose exec wordpress wp giftmedtema seed-noticias --allow-root
+
+# Ou via env (nunca em production sem GIFTMED_SEED_FORCE=1):
+GIFTMED_SEED_NOTICIAS=1
+```
+
+### All-in-One WP Migration
+
+Fica **desativado** pelo mu-plugin. Para usar temporariamente:
+
+```env
+GIFTMED_ALLOW_MIGRATION=1
+```
+
 
 ## Desenvolvimento local
 

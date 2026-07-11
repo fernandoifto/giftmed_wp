@@ -4,6 +4,13 @@
  *
  * @package GiftMedTema
  */
+
+$email_contato = giftmedtema_mod( 'email_contato', 'contato@giftmed.org' );
+$email_mkt     = giftmedtema_mod( 'email_mkt', 'mkt@giftmed.org' );
+$instagram_url = giftmedtema_mod( 'instagram_url', 'https://www.instagram.com/giftmed4/' );
+$ig_handle     = giftmedtema_mod( 'instagram_handle', '@giftmed4' );
+$youtube_url   = giftmedtema_mod( 'youtube_url', 'https://www.youtube.com/@giftmed4' );
+$tiktok_url    = giftmedtema_mod( 'tiktok_url', 'https://www.tiktok.com/@giftmed4' );
 ?>
 
 <section id="contato" class="gm-section gm-contact-section" aria-labelledby="gm-contact-title">
@@ -19,30 +26,30 @@
 				</p>
 
 				<div class="gm-contact-panel__channels">
-					<a class="gm-contact-panel__channel" href="mailto:contato@giftmed.org">
+					<a class="gm-contact-panel__channel" href="<?php echo esc_url( 'mailto:' . $email_contato ); ?>">
 						<span class="gm-contact-panel__icon" aria-hidden="true">💼</span>
 						<span>
 							<small><?php esc_html_e( 'Direção Geral & Parcerias', 'giftmedtema' ); ?></small>
-							<strong>contato@giftmed.org</strong>
+							<strong><?php echo esc_html( $email_contato ); ?></strong>
 						</span>
 					</a>
-					<a class="gm-contact-panel__channel" href="mailto:mkt@giftmed.org">
+					<a class="gm-contact-panel__channel" href="<?php echo esc_url( 'mailto:' . $email_mkt ); ?>">
 						<span class="gm-contact-panel__icon gm-contact-panel__icon--alt" aria-hidden="true">📣</span>
 						<span>
 							<small><?php esc_html_e( 'Marketing & Relacionamento', 'giftmedtema' ); ?></small>
-							<strong>mkt@giftmed.org</strong>
+							<strong><?php echo esc_html( $email_mkt ); ?></strong>
 						</span>
 					</a>
 					<a
 						class="gm-contact-panel__channel"
-						href="https://www.instagram.com/giftmed4/"
+						href="<?php echo esc_url( $instagram_url ); ?>"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
 						<span class="gm-contact-panel__icon gm-contact-panel__icon--social" aria-hidden="true">📷</span>
 						<span>
 							<small><?php esc_html_e( 'Instagram oficial', 'giftmedtema' ); ?></small>
-							<strong>@giftmed4</strong>
+							<strong><?php echo esc_html( $ig_handle ); ?></strong>
 						</span>
 					</a>
 				</div>
@@ -65,6 +72,11 @@
 					<form class="gm-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
 						<input type="hidden" name="action" value="giftmed_demo">
 						<?php wp_nonce_field( 'giftmed_demo', 'giftmed_demo_nonce' ); ?>
+
+						<div class="gm-form__hp" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden;">
+							<label for="giftmed-website"><?php esc_html_e( 'Website', 'giftmedtema' ); ?></label>
+							<input type="text" name="website" id="giftmed-website" value="" tabindex="-1" autocomplete="off">
+						</div>
 
 						<div class="gm-form__row">
 							<label class="gm-form__field">
@@ -105,19 +117,19 @@
 				$social_networks = array(
 					array(
 						'label' => 'Instagram',
-						'url'   => 'https://www.instagram.com/giftmed4/',
+						'url'   => $instagram_url,
 						'class' => 'gm-footer__social--instagram',
 						'icon'  => '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>',
 					),
 					array(
 						'label' => 'YouTube',
-						'url'   => 'https://www.youtube.com/@giftmed4',
+						'url'   => $youtube_url,
 						'class' => 'gm-footer__social--youtube',
 						'icon'  => '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8ZM9.8 15.5v-7l6.2 3.5-6.2 3.5Z"/></svg>',
 					),
 					array(
 						'label' => 'TikTok',
-						'url'   => 'https://www.tiktok.com/@giftmed4',
+						'url'   => $tiktok_url,
 						'class' => 'gm-footer__social--tiktok',
 						'icon'  => '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16.6 5.8A4.7 4.7 0 0 1 14.9 2h-3.2v13.1a2.6 2.6 0 1 1-1.8-2.5V9.3a5.8 5.8 0 1 0 5 5.7V9.4a7.8 7.8 0 0 0 4.5 1.4V7.6a4.7 4.7 0 0 1-2.8-1.8Z"/></svg>',
 					),
@@ -137,7 +149,7 @@
 						</span>
 						<span class="gm-footer__social-meta">
 							<small><?php echo esc_html( $network['label'] ); ?></small>
-							<strong>@giftmed4</strong>
+							<strong><?php echo esc_html( $ig_handle ); ?></strong>
 						</span>
 					</a>
 				<?php endforeach; ?>
@@ -167,29 +179,36 @@
 
 			<nav class="gm-footer__col" aria-label="<?php esc_attr_e( 'Navegação do site', 'giftmedtema' ); ?>">
 				<strong><?php esc_html_e( 'Navegação', 'giftmedtema' ); ?></strong>
-				<ul>
-					<li><a href="<?php echo esc_url( home_url( '/#noticias' ) ); ?>"><?php esc_html_e( 'Notícias', 'giftmedtema' ); ?></a></li>
-					<li><a href="<?php echo esc_url( home_url( '/#solucao' ) ); ?>"><?php esc_html_e( 'A Solução', 'giftmedtema' ); ?></a></li>
-					<li><a href="<?php echo esc_url( home_url( '/#desafio' ) ); ?>"><?php esc_html_e( 'O Desafio', 'giftmedtema' ); ?></a></li>
-					<li><a href="<?php echo esc_url( home_url( '/#como-funciona' ) ); ?>"><?php esc_html_e( 'Como Funciona', 'giftmedtema' ); ?></a></li>
-					<li><a href="<?php echo esc_url( home_url( '/#funcionalidades' ) ); ?>"><?php esc_html_e( 'Recursos', 'giftmedtema' ); ?></a></li>
-					<li><a href="<?php echo esc_url( home_url( '/#impacto' ) ); ?>"><?php esc_html_e( 'Impacto', 'giftmedtema' ); ?></a></li>
-				</ul>
+				<?php
+				if ( has_nav_menu( 'footer' ) ) {
+					wp_nav_menu(
+						array(
+							'theme_location' => 'footer',
+							'container'      => false,
+							'menu_class'     => '',
+							'depth'          => 1,
+							'fallback_cb'    => false,
+						)
+					);
+				} else {
+					giftmedtema_fallback_menu( array( 'menu_class' => '' ) );
+				}
+				?>
 			</nav>
 
 			<nav class="gm-footer__col" aria-label="<?php esc_attr_e( 'Contato', 'giftmedtema' ); ?>">
 				<strong><?php esc_html_e( 'Contato', 'giftmedtema' ); ?></strong>
 				<ul>
 					<li>
-						<a href="mailto:contato@giftmed.org">
+						<a href="<?php echo esc_url( 'mailto:' . $email_contato ); ?>">
 							<span><?php esc_html_e( 'Direção & Parcerias', 'giftmedtema' ); ?></span>
-							<strong>contato@giftmed.org</strong>
+							<strong><?php echo esc_html( $email_contato ); ?></strong>
 						</a>
 					</li>
 					<li>
-						<a href="mailto:mkt@giftmed.org">
+						<a href="<?php echo esc_url( 'mailto:' . $email_mkt ); ?>">
 							<span><?php esc_html_e( 'Marketing', 'giftmedtema' ); ?></span>
-							<strong>mkt@giftmed.org</strong>
+							<strong><?php echo esc_html( $email_mkt ); ?></strong>
 						</a>
 					</li>
 				</ul>

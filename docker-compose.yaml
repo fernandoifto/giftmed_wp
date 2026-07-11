@@ -37,7 +37,10 @@ services:
       WORDPRESS_DEBUG: ${WORDPRESS_DEBUG:-0}
       WP_HOME: ${WP_HOME:-http://localhost:8080}
       WP_SITEURL: ${WP_SITEURL:-http://localhost:8080}
+      WP_ENVIRONMENT_TYPE: ${WP_ENVIRONMENT_TYPE:-local}
       GIFTMED_SEED_NOTICIAS: ${GIFTMED_SEED_NOTICIAS:-0}
+      GIFTMED_SEED_FORCE: ${GIFTMED_SEED_FORCE:-0}
+      GIFTMED_ALLOW_MIGRATION: ${GIFTMED_ALLOW_MIGRATION:-0}
       WORDPRESS_AUTH_KEY: ${WORDPRESS_AUTH_KEY:-}
       WORDPRESS_SECURE_AUTH_KEY: ${WORDPRESS_SECURE_AUTH_KEY:-}
       WORDPRESS_LOGGED_IN_KEY: ${WORDPRESS_LOGGED_IN_KEY:-}
@@ -52,6 +55,9 @@ services:
         define('WP_DEBUG_DISPLAY', false);
         define('DISALLOW_FILE_EDIT', true);
         define('FS_METHOD', 'direct');
+        if (getenv('WP_ENVIRONMENT_TYPE')) {
+            define('WP_ENVIRONMENT_TYPE', getenv('WP_ENVIRONMENT_TYPE'));
+        }
         if (getenv('WP_HOME')) {
             define('WP_HOME', getenv('WP_HOME'));
         }
