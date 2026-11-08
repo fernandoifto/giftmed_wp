@@ -77,12 +77,9 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    # Coolify/proxy: expose 80. Acesso direto no host: PHPMYADMIN_PORT (padrão 8080).
-    # Local: defina PHPMYADMIN_PORT=8081 no .env (8080 fica com o WordPress).
+    # Sem porta no host: no Coolify o proxy publica o serviço. A 8080 já está ocupada no servidor.
     expose:
       - "80"
-    ports:
-      - "${PHPMYADMIN_PORT:-8080}:80"
     environment:
       PMA_HOST: db
       PMA_PORT: 3306

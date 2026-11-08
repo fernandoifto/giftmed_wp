@@ -4,3 +4,6 @@ services:
   wordpress:
     ports:
       - "${WORDPRESS_PORT:-8080}:80"
+  phpmyadmin:
+    ports:
+      - "${PHPMYADMIN_PORT:-8081}:80"
