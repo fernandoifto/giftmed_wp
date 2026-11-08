@@ -22,8 +22,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.wordpress
-      network: host
-    image: giftmed-wordpress:6.9-php8.5.12
+    image: giftmed-wordpress:7.1-php8.5.12
     restart: unless-stopped
     depends_on:
       db:
