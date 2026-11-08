@@ -67,7 +67,7 @@ services:
     volumes:
       - wp_data:/var/www/html
       - ./wp-content:/var/www/html/wp-content
-      - ./giftmedtema1.1:/var/www/html/wp-content/themes/giftmedtema1.1
+      - ./giftmedtema:/var/www/html/wp-content/themes/giftmedtema
     networks:
       - wordpress
 
