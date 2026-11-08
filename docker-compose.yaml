@@ -71,6 +71,24 @@ services:
     networks:
       - wordpress
 
+  phpmyadmin:
+    image: phpmyadmin:5
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    expose:
+      - "80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: ${MYSQL_USER}
+      PMA_PASSWORD: ${MYSQL_PASSWORD}
+      UPLOAD_LIMIT: 512M
+      PMA_ABSOLUTE_URI: ${PMA_ABSOLUTE_URI:-}
+    networks:
+      - wordpress
+
   ftp:
     image: stilliard/pure-ftpd:hardened
     restart: unless-stopped
