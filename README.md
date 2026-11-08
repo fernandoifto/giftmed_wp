@@ -2,7 +2,7 @@
 
 Site institucional da GiftMed — Tecnologia Social para Farmácia Solidária.
 
-Stack: **WordPress 6.8**, **PHP 8.2**, **MySQL 8**, tema customizado `giftmedtema`, Docker Compose.
+Stack: **WordPress 6.8**, **PHP 8.2**, **MySQL 8**, tema customizado `giftmedtema1.1`, Docker Compose.
 
 ## Estrutura do repositório
 
@@ -13,7 +13,7 @@ giftmedwp/
 ├── Dockerfile.wordpress         # Imagem com limite de upload PHP
 ├── .env.example                 # Modelo de variáveis
 ├── uploads.ini                  # Limites PHP (embutido na imagem)
-├── giftmedtema/                 # Tema customizado (inc/, Customizer, templates)
+├── giftmedtema1.1/                 # Tema customizado (inc/, Customizer, templates)
 ├── deploy/                      # Staging FTP (.sql, uploads) — não versionado
 └── wp-content/                  # Plugins, mu-plugins, uploads
     └── mu-plugins/              # Hardening (AI1WM off por padrão)
@@ -186,6 +186,19 @@ Repositório: `https://github.com/fernandoifto/giftmed_wp`
 
 > O Coolify aceita `docker-compose.yaml` e `docker-compose.yml` — este projeto usa **`.yaml`**.
 
+### phpMyAdmin
+
+O serviço `phpmyadmin` publica a porta host **8080** (variável `PHPMYADMIN_PORT`).
+
+- URL em produção: **http://giftmed.org:8080/** (HTTP — a porta 8080 não tem certificado HTTPS do proxy)
+- No Coolify, defina `PMA_ABSOLUTE_URI=http://giftmed.org:8080/`
+- Libere a porta **8080** no firewall do VPS (e no security group do provedor, se houver)
+- Faça **Redeploy** após o push desta alteração
+
+Não use `https://giftmed.org:8080/`: o `:8080` no campo Domains do Coolify significa porta **interna** do container; o phpMyAdmin escuta na **80**. Visitantes na 8080 do host usam HTTP direto.
+
+Alternativa com HTTPS: no serviço **phpmyadmin**, Domains = `https://pma.giftmed.org` (sem `:8080`), DNS A para o VPS, e `PMA_ABSOLUTE_URI=https://pma.giftmed.org/`.
+
 ### Variáveis obrigatórias no Coolify
 
 | Variável | Exemplo |
@@ -197,10 +210,11 @@ Repositório: `https://github.com/fernandoifto/giftmed_wp`
 | `WORDPRESS_DEBUG` | `0` |
 | `WP_HOME` | `https://seudominio.com.br` |
 | `WP_SITEURL` | `https://seudominio.com.br` |
+| `PMA_ABSOLUTE_URI` | `http://giftmed.org:8080/` |
 | `GIFTMED_SEED_NOTICIAS` | `0` |
 | `WORDPRESS_AUTH_KEY` … `WORDPRESS_NONCE_SALT` | gerar em [api.wordpress.org/secret-key/1.1/salt/](https://api.wordpress.org/secret-key/1.1/salt/) |
 
-`WORDPRESS_PORT` é só para desenvolvimento local (`docker-compose.override.yaml`). **Não defina** `WORDPRESS_PORT` no Coolify — o proxy acessa o container pela rede interna na porta 80.
+`WORDPRESS_PORT` é só para desenvolvimento local (`docker-compose.override.yaml`). **Não defina** `WORDPRESS_PORT` no Coolify — o proxy acessa o container pela rede interna na porta 80. Em produção, deixe `PHPMYADMIN_PORT` sem definir (padrão **8080**) ou defina `8080` explicitamente.
 
 ### Banco de dados
 
