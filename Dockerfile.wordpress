@@ -1,9 +1,7 @@
-# wordpress:6.8-php8.2-apache was last published on 2025-12-02 and does not
-# include PHP 8.2.35. This image tracks the same WordPress 6.8 line on the
-# official php:8.2-apache build that contains that security release.
-# PHP 8.2.35 fixes CVE-2026-109618 and CVE-2026-109619.
-# Digest checked on 2026-11-07: PHP 8.2.35 (cli) (built: Nov 5 2026 07:29:05).
-FROM php:8.2-apache@sha256:1bc4115a5528326425f1f59846fc7879d7d3843da9905b42931755ac4d4b29bc
+# Latest stable PHP. 8.6 is still a release candidate.
+# Digest checked on 2026-11-07: PHP 8.5.12 (cli) (built: Nov 5 2026 07:20:51).
+# WordPress 6.8 does not support PHP 8.5; 6.9.11 is the patched release that does.
+FROM php:8.5-apache@sha256:08af36df144462d84c7f16190557eec06cb9f656882685610b712a15eec54d46
 
 RUN set -eux; \
 	apt-get update; \
@@ -107,10 +105,10 @@ RUN set -eux; \
 	a2enconf remoteip; \
 	find /etc/apache2 -type f -name '*.conf' -exec sed -ri 's/([[:space:]]*LogFormat[[:space:]]+"[^"]*)%h([^"]*")/\1%a\2/g' '{}' +
 
-# Security release of the 6.8 branch already used by this project.
+# Security release of the 6.9 branch, the oldest line fully compatible with PHP 8.5.
 RUN set -eux; \
-	version='6.8.12'; \
-	sha1='4f80d3291d14802b2cf34a5b67377b79ad1ea483'; \
+	version='6.9.11'; \
+	sha1='38e46b10acb2fe37ab20930f222075b9ee7e080d'; \
 	\
 	curl -o wordpress.tar.gz -fL "https://wordpress.org/wordpress-$version.tar.gz"; \
 	echo "$sha1 *wordpress.tar.gz" | sha1sum -c -; \

@@ -65,6 +65,31 @@ if [[ "${1-}" == apache2* ]] || [ "${1-}" = 'php-fpm' ] || { self="$(basename "$
 		done
 		tar "${sourceTarArgs[@]}" . | tar "${targetTarArgs[@]}"
 		echo >&2 "Complete! WordPress has been successfully copied to $PWD"
+	elif [ -e wp-includes/version.php ] && [ -e /usr/src/wordpress/wp-includes/version.php ]; then
+		installed_version="$(php -r 'include "wp-includes/version.php"; echo $wp_version;')"
+		source_version="$(php -r 'include "/usr/src/wordpress/wp-includes/version.php"; echo $wp_version;')"
+		older="$(printf '%s\n%s\n' "$installed_version" "$source_version" | sort -V | head -n 1)"
+		if [ "$installed_version" != "$source_version" ] && [ "$older" = "$installed_version" ]; then
+			echo >&2 "Updating WordPress core from $installed_version to $source_version (keeping wp-content and wp-config.php)..."
+			sourceTarArgs=(
+				--create
+				--file -
+				--directory /usr/src/wordpress
+				--owner "$user" --group "$group"
+				--exclude ./wp-content
+				--exclude ./wp-config.php
+				--exclude ./.htaccess
+			)
+			targetTarArgs=(
+				--extract
+				--file -
+			)
+			if [ "$uid" != '0' ]; then
+				targetTarArgs+=( --no-overwrite-dir )
+			fi
+			tar "${sourceTarArgs[@]}" . | tar "${targetTarArgs[@]}"
+			echo >&2 "Complete! WordPress core updated to $source_version"
+		fi
 	fi
 
 	wpEnvs=( "${!WORDPRESS_@}" )
